@@ -5,7 +5,7 @@
  */
 package ui;
 
-import com.mycompany.assignment1.Person;
+import com.mycompany.assignment1.*;
 
 /**
  *
@@ -17,6 +17,7 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     Person person;
+    Address address;
     public MainJFrame() {
         initComponents();
     }
@@ -34,21 +35,45 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         btnCreate = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
+        btnCreateAddress = new javax.swing.JButton();
+        btnViewAddress = new javax.swing.JButton();
+        btnViewReport = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnCreate.setText("Create");
+        btnCreate.setText("Create Perosnal Details");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
 
-        btnView.setText("View");
+        btnView.setText("View Personal Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
+            }
+        });
+
+        btnCreateAddress.setText("Create Address Details");
+        btnCreateAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateAddressActionPerformed(evt);
+            }
+        });
+
+        btnViewAddress.setText("View Address Details");
+        btnViewAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAddressActionPerformed(evt);
+            }
+        });
+
+        btnViewReport.setText("View Report");
+        btnViewReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewReportActionPerformed(evt);
             }
         });
 
@@ -60,11 +85,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnView)
-                    .addComponent(btnCreate))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(btnCreate)
+                    .addComponent(btnCreateAddress)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnViewReport)
+                            .addComponent(btnViewAddress))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnView});
+
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnViewAddress, btnViewReport});
 
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,7 +106,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnCreate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnView)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCreateAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnViewAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewReport)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         splitPanel.setLeftComponent(controlPanel);
@@ -120,6 +159,25 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPanel.setRightComponent(viewPersonPanel);
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void btnCreateAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAddressActionPerformed
+        // TODO add your handling code here:
+        address = new Address();
+        CreateAddressPanel addressPanel = new CreateAddressPanel(address);
+        splitPanel.setRightComponent(addressPanel);
+    }//GEN-LAST:event_btnCreateAddressActionPerformed
+
+    private void btnViewAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAddressActionPerformed
+        // TODO add your handling code here:
+        ViewAddressPanel viewAddressPanel = new ViewAddressPanel(address);
+        splitPanel.setRightComponent(viewAddressPanel);
+    }//GEN-LAST:event_btnViewAddressActionPerformed
+
+    private void btnViewReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewReportActionPerformed
+        // TODO add your handling code here:
+        ViewReportPanel viewReportPanel  = new ViewReportPanel(person, address);
+        splitPanel.setRightComponent(viewReportPanel);
+    }//GEN-LAST:event_btnViewReportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,7 +215,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnCreateAddress;
     private javax.swing.JButton btnView;
+    private javax.swing.JButton btnViewAddress;
+    private javax.swing.JButton btnViewReport;
     private javax.swing.JPanel controlPanel;
     private javax.swing.JSplitPane splitPanel;
     private javax.swing.JPanel workArea;
