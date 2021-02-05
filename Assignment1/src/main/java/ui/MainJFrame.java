@@ -18,6 +18,8 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     Person person;
     Address address;
+    Account savingsAccount;
+    Account checkingAccount;
     public MainJFrame() {
         initComponents();
     }
@@ -32,15 +34,34 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         splitPanel = new javax.swing.JSplitPane();
+        workArea = new javax.swing.JPanel();
         controlPanel = new javax.swing.JPanel();
         btnCreate = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         btnCreateAddress = new javax.swing.JButton();
         btnViewAddress = new javax.swing.JButton();
         btnViewReport = new javax.swing.JButton();
-        workArea = new javax.swing.JPanel();
+        btnCreateSavingsAccount = new javax.swing.JButton();
+        btnViewSavingsAccount = new javax.swing.JButton();
+        btnCreateCheckingAccount = new javax.swing.JButton();
+        btnViewCheckingAccount = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
+        workArea.setLayout(workAreaLayout);
+        workAreaLayout.setHorizontalGroup(
+            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 355, Short.MAX_VALUE)
+        );
+        workAreaLayout.setVerticalGroup(
+            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 461, Short.MAX_VALUE)
+        );
+
+        splitPanel.setRightComponent(workArea);
 
         btnCreate.setText("Create Perosnal Details");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +98,43 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateSavingsAccount.setText("Create Savings Account");
+        btnCreateSavingsAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateSavingsAccountActionPerformed(evt);
+            }
+        });
+
+        btnViewSavingsAccount.setText("View Savings Account");
+        btnViewSavingsAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewSavingsAccountActionPerformed(evt);
+            }
+        });
+
+        btnCreateCheckingAccount.setText("Create Checking Account");
+        btnCreateCheckingAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateCheckingAccountActionPerformed(evt);
+            }
+        });
+
+        btnViewCheckingAccount.setText("View Checking Account");
+        btnViewCheckingAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCheckingAccountActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Create Driving Profile");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("View Driving Profile");
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -84,51 +142,54 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnView)
                     .addComponent(btnCreate)
-                    .addComponent(btnCreateAddress)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnViewReport)
-                            .addComponent(btnViewAddress))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnViewSavingsAccount)
+                    .addComponent(btnCreateSavingsAccount)
+                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnView, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreateAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCreateCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnView});
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreateSavingsAccount, btnViewSavingsAccount});
 
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnViewAddress, btnViewReport});
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnViewCheckingAccount, jButton1, jButton2});
 
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(20, 20, 20)
                 .addComponent(btnCreate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnView)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreateAddress)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnViewAddress)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnViewReport)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCreateSavingsAccount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewSavingsAccount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCreateCheckingAccount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewCheckingAccount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         splitPanel.setLeftComponent(controlPanel);
-
-        javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
-        workArea.setLayout(workAreaLayout);
-        workAreaLayout.setHorizontalGroup(
-            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
-        );
-        workAreaLayout.setVerticalGroup(
-            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
-        splitPanel.setRightComponent(workArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +239,39 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPanel.setRightComponent(viewReportPanel);
     }//GEN-LAST:event_btnViewReportActionPerformed
 
+    private void btnCreateSavingsAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSavingsAccountActionPerformed
+        // TODO add your handling code here:
+        savingsAccount = new Account();
+        CreateSavingAccountPanel savingsPanel = new CreateSavingAccountPanel(savingsAccount);
+        splitPanel.setRightComponent(savingsPanel);
+    }//GEN-LAST:event_btnCreateSavingsAccountActionPerformed
+
+    private void btnViewSavingsAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewSavingsAccountActionPerformed
+        // TODO add your handling code here:
+        ViewSavingsAccountPanel viewSavingsPanel = new ViewSavingsAccountPanel(savingsAccount);
+        splitPanel.setRightComponent(viewSavingsPanel);
+    }//GEN-LAST:event_btnViewSavingsAccountActionPerformed
+
+    private void btnCreateCheckingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCheckingAccountActionPerformed
+        // TODO add your handling code here:
+        checkingAccount = new Account();
+        CreateCheckingAccountPanel createCheckingPanel;
+        createCheckingPanel = new CreateCheckingAccountPanel(checkingAccount);
+        splitPanel.setRightComponent(createCheckingPanel);
+    }//GEN-LAST:event_btnCreateCheckingAccountActionPerformed
+
+    private void btnViewCheckingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCheckingAccountActionPerformed
+        // TODO add your handling code here:
+        ViewCheckingAccountPanel viewCheckingPanel = new ViewCheckingAccountPanel(checkingAccount);
+        splitPanel.setRightComponent(viewCheckingPanel);
+    }//GEN-LAST:event_btnViewCheckingAccountActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CreateDrivingPanel viewDrivingPanel = new CreateDrivingPanel();
+        splitPanel.setRightComponent(viewDrivingPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,10 +310,16 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnCreateAddress;
+    private javax.swing.JButton btnCreateCheckingAccount;
+    private javax.swing.JButton btnCreateSavingsAccount;
     private javax.swing.JButton btnView;
     private javax.swing.JButton btnViewAddress;
+    private javax.swing.JButton btnViewCheckingAccount;
     private javax.swing.JButton btnViewReport;
+    private javax.swing.JButton btnViewSavingsAccount;
     private javax.swing.JPanel controlPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JSplitPane splitPanel;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables

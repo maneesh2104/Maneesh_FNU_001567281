@@ -17,10 +17,10 @@ public class ViewPersonPanel extends javax.swing.JPanel {
      * Creates new form ViewPersonPanel
      */
     Person person;
+    int a = 0;
     public ViewPersonPanel(Person person) {
         initComponents();
-        this.person = person;
-        
+        this.person = person;        
         txtAge.setText(person.getAge());
         txtDob.setText(person.getDob());
         txtFirstName.setText(person.getFirst_name());

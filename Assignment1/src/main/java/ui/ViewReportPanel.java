@@ -24,8 +24,19 @@ public class ViewReportPanel extends javax.swing.JPanel {
         this.person = person;
         this.address = address;
         
-        txtAge.setText(person.getAge());
+        txtCity.setText(address.getCity());
         txtState.setText(address.getState());
+        txtStreet.setText(address.getStreet());
+        txtZip.setText(address.getZip());
+        
+        txtAge.setText(person.getAge());
+        txtDob.setText(person.getDob());
+        txtFirstName.setText(person.getFirst_name());
+        txtLastName.setText(person.getLast_name());
+        txtWeight.setText(person.getWeight());
+        txtSSN.setText(person.getSsn());
+        txtPhoneNumber.setText(person.getPhone_number());
+        txtHeight.setText(person.getHeight());
     }
 
     /**
