@@ -21,6 +21,7 @@ public class MainJFrame extends javax.swing.JFrame {
     Account savingsAccount;
     Account checkingAccount;
     License drivingLicense;
+    Medical medicalDetails;
     public MainJFrame() {
         initComponents();
     }
@@ -48,19 +49,10 @@ public class MainJFrame extends javax.swing.JFrame {
         btnViewCheckingAccount = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnCreateMedical = new javax.swing.JButton();
+        btnViewMedicalDetails = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
-        workArea.setLayout(workAreaLayout);
-        workAreaLayout.setHorizontalGroup(
-            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
-        );
-        workAreaLayout.setVerticalGroup(
-            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 461, Short.MAX_VALUE)
-        );
 
         splitPanel.setRightComponent(workArea);
 
@@ -141,6 +133,20 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateMedical.setText("Create Medical Profile");
+        btnCreateMedical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateMedicalActionPerformed(evt);
+            }
+        });
+
+        btnViewMedicalDetails.setText("View Medical Details");
+        btnViewMedicalDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewMedicalDetailsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -148,18 +154,21 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCreate)
-                    .addComponent(btnViewSavingsAccount)
-                    .addComponent(btnCreateSavingsAccount)
-                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnView, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnViewReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCreateAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnViewAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnCreateCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnCreate)
+                        .addComponent(btnViewSavingsAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreateSavingsAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnView, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCreateAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnViewCheckingAccount, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreateCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreateMedical)
+                    .addComponent(btnViewMedicalDetails))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -192,7 +201,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCreateMedical)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewMedicalDetails)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         splitPanel.setLeftComponent(controlPanel);
@@ -241,7 +254,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnViewReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewReportActionPerformed
         // TODO add your handling code here:
-        ViewReportPanel viewReportPanel  = new ViewReportPanel(person, address);
+        ReportScroll viewReportPanel  = new ReportScroll(person,address,savingsAccount,checkingAccount,drivingLicense,medicalDetails);
         splitPanel.setRightComponent(viewReportPanel);
     }//GEN-LAST:event_btnViewReportActionPerformed
 
@@ -281,9 +294,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ViewDrivingPanel viewDrivingPanel = new ViewDrivingPanel();
+        ViewDrivingPanel viewDrivingPanel = new ViewDrivingPanel(drivingLicense);
         splitPanel.setRightComponent(viewDrivingPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnCreateMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateMedicalActionPerformed
+        // TODO add your handling code here:
+           medicalDetails = new Medical();
+        CreateMedicalPanel medicalPanel = new CreateMedicalPanel(medicalDetails);
+        splitPanel.setRightComponent(medicalPanel);
+    }//GEN-LAST:event_btnCreateMedicalActionPerformed
+
+    private void btnViewMedicalDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMedicalDetailsActionPerformed
+        // TODO add your handling code here:
+        ViewMedicalPanel viewMedicalPanel = new ViewMedicalPanel(medicalDetails);
+        splitPanel.setRightComponent(viewMedicalPanel);
+    }//GEN-LAST:event_btnViewMedicalDetailsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,10 +350,12 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnCreateAddress;
     private javax.swing.JButton btnCreateCheckingAccount;
+    private javax.swing.JButton btnCreateMedical;
     private javax.swing.JButton btnCreateSavingsAccount;
     private javax.swing.JButton btnView;
     private javax.swing.JButton btnViewAddress;
     private javax.swing.JButton btnViewCheckingAccount;
+    private javax.swing.JButton btnViewMedicalDetails;
     private javax.swing.JButton btnViewReport;
     private javax.swing.JButton btnViewSavingsAccount;
     private javax.swing.JPanel controlPanel;

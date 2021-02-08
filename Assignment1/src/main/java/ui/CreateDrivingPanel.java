@@ -28,7 +28,7 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
     License driving;
     public CreateDrivingPanel(License driving) {
         this.driving = driving;
-        initComponents();   
+        initComponents();  
     }
 
     /**
@@ -73,7 +73,7 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
         });
 
         lblType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblType.setText("Type");
+        lblType.setText("File");
         lblType.setToolTipText("");
 
         lblBankName.setText("License Number");
@@ -159,37 +159,36 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
 
     private void btnCreateDrivingLicenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDrivingLicenseActionPerformed
         // TODO add your handling code here:
+        driving.setNumber(txtLicenseNumber.getText());
+        driving.setBloodType(txtBloodType.getText());
+        driving.setDateOfExpiration(txtDateOfExpiry.getText());
+        driving.setDateOfIssue(txtDateOfIssue.getText());
         
-        
-//        checking.setAccountNumber(txtAccountNumber.getText());
-//        checking.setBalance(txtBalance.getText());
-//        checking.setBankName(txtBankName.getText());
-//        checking.setRoutingNumber(txtRoutingNumber.getText());
-//        checking.setType(txtType.getText());
     }//GEN-LAST:event_btnCreateDrivingLicenseActionPerformed
 
     private void btnUploadPictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPictureActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
-    chooser.showOpenDialog(null);
-    File f = chooser.getSelectedFile();
-    String filename = f.getAbsolutePath();
-    txtDateOfExpiry.setText(filename);
-    try {
-//        ImageIcon ii=new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
-        ImageIcon i = new ImageIcon(ImageIO.read(new File(f.getAbsolutePath())));
-         BufferedImage img = ImageIO.read(new File(f.getAbsolutePath()));
-         img.getScaledInstance(150, 150,Image.SCALE_SMOOTH);
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        txtDateOfExpiry.setText(filename);
+        driving.setFileName(filename);
+        try {
+            //        ImageIcon ii=new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
+            ImageIcon i = new ImageIcon(ImageIO.read(new File(f.getAbsolutePath())));
+            BufferedImage img = ImageIO.read(new File(f.getAbsolutePath()));
+            img.getScaledInstance(150, 150,Image.SCALE_SMOOTH);
 
-         ImageIcon icon = new ImageIcon(img);
-         JLabel label = new JLabel(icon);
+            ImageIcon icon = new ImageIcon(img);
+            JLabel label = new JLabel(icon);
 
-         JOptionPane.showMessageDialog(null, label);
-         
-//        jLabel1.setIcon(ii);
-    } catch (Exception ex) {
-        ex.printStackTrace();
-    }
+            JOptionPane.showMessageDialog(null, label);
+
+            //        jLabel1.setIcon(ii);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnUploadPictureActionPerformed
 
 

@@ -5,26 +5,26 @@
  */
 package ui;
 
-import com.mycompany.assignment1.License;
+import com.mycompany.assignment1.Medical;
 
 /**
  *
  * @author maneesh
  */
-public class ViewDrivingPanel extends javax.swing.JPanel {
+public class ViewMedicalPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewDrivingPanel
+     * Creates new form ViewMedicalPanel
      */
-    License driving;
-    public ViewDrivingPanel(License driving) {
+    Medical medicalDetails;
+    public ViewMedicalPanel(Medical medicalDetails) {
         initComponents();
-        this.driving = driving;
+        this.medicalDetails = medicalDetails;
         
-        txtBloodType.setText(driving.getBloodType());
-        txtDateOfExpiry.setText(driving.getDateOfExpiration());
-        txtDateOfIssue.setText(driving.getDateOfIssue());
-        txtLicenseNumber.setText(driving.getNumber());
+        txtRecordNumber.setText(medicalDetails.getRecordNumber());
+        txtAllergy1.setText(medicalDetails.getAllergy1());
+        txtAllergy2.setText(medicalDetails.getAllergy2());
+        txtAllergy3.setText(medicalDetails.getAllergy3());
     }
 
     /**
@@ -36,32 +36,32 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtBloodType = new javax.swing.JTextField();
-        lblBankName = new javax.swing.JLabel();
-        lblHeader = new javax.swing.JLabel();
-        txtLicenseNumber = new javax.swing.JTextField();
+        txtRecordNumber = new javax.swing.JTextField();
         lblRoutingNumber = new javax.swing.JLabel();
         lblAccountNumber = new javax.swing.JLabel();
-        txtDateOfIssue = new javax.swing.JTextField();
-        txtDateOfExpiry = new javax.swing.JTextField();
+        txtAllergy1 = new javax.swing.JTextField();
+        txtAllergy2 = new javax.swing.JTextField();
         lblAccountBalance = new javax.swing.JLabel();
+        txtAllergy3 = new javax.swing.JTextField();
+        lblBankName = new javax.swing.JLabel();
+        lblHeader = new javax.swing.JLabel();
 
-        lblBankName.setText("License Number");
-
-        lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeader.setText("View Driver's license information");
-
-        txtLicenseNumber.addActionListener(new java.awt.event.ActionListener() {
+        txtRecordNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLicenseNumberActionPerformed(evt);
+                txtRecordNumberActionPerformed(evt);
             }
         });
 
-        lblRoutingNumber.setText("Date of Issue");
+        lblRoutingNumber.setText("Allergy 1");
 
-        lblAccountNumber.setText("Date of Expiry");
+        lblAccountNumber.setText("Allergy 2");
 
-        lblAccountBalance.setText("Blood tpe");
+        lblAccountBalance.setText("Allergy 3");
+
+        lblBankName.setText("Record Number");
+
+        lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHeader.setText("View Medical information");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,18 +77,21 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblRoutingNumber)
                                     .addComponent(lblBankName))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDateOfIssue)
-                                    .addComponent(txtLicenseNumber)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAllergy2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                                            .addComponent(txtAllergy1)
+                                            .addComponent(txtAllergy3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtRecordNumber))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblAccountNumber)
                                     .addComponent(lblAccountBalance))
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                                    .addComponent(txtDateOfExpiry)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -100,26 +103,26 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBankName)
-                    .addComponent(txtLicenseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRecordNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRoutingNumber)
-                    .addComponent(txtDateOfIssue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAllergy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAccountNumber)
-                    .addComponent(txtDateOfExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAllergy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAccountBalance)
-                    .addComponent(txtBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                    .addComponent(txtAllergy3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLicenseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLicenseNumberActionPerformed
+    private void txtRecordNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecordNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLicenseNumberActionPerformed
+    }//GEN-LAST:event_txtRecordNumberActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -128,9 +131,9 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblBankName;
     private javax.swing.JLabel lblHeader;
     private javax.swing.JLabel lblRoutingNumber;
-    private javax.swing.JTextField txtBloodType;
-    private javax.swing.JTextField txtDateOfExpiry;
-    private javax.swing.JTextField txtDateOfIssue;
-    private javax.swing.JTextField txtLicenseNumber;
+    private javax.swing.JTextField txtAllergy1;
+    private javax.swing.JTextField txtAllergy2;
+    private javax.swing.JTextField txtAllergy3;
+    private javax.swing.JTextField txtRecordNumber;
     // End of variables declaration//GEN-END:variables
 }

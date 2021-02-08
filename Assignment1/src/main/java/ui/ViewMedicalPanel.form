@@ -27,32 +27,31 @@
                                   <Component id="lblRoutingNumber" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblBankName" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDateOfIssue" max="32767" attributes="0"/>
-                                  <Component id="txtLicenseNumber" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtAllergy2" alignment="0" pref="248" max="32767" attributes="0"/>
+                                          <Component id="txtAllergy1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtAllergy3" alignment="0" pref="248" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtRecordNumber" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblAccountNumber" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAccountBalance" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblType" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtBloodType" pref="384" max="32767" attributes="0"/>
-                                  <Component id="txtDateOfExpiry" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="btnUploadPicture" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Component id="lblHeader" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnCreateDrivingLicense" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -66,95 +65,65 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblBankName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtLicenseNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRecordNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDateOfIssue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAllergy1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDateOfExpiry" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAllergy2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAccountBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBloodType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAllergy3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnUploadPicture" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnCreateDrivingLicense" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtLicenseNumber">
+    <Component class="javax.swing.JTextField" name="txtRecordNumber">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLicenseNumberActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRecordNumberActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRoutingNumber">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date of Issue"/>
+        <Property name="text" type="java.lang.String" value="Allergy 1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAccountNumber">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date of Expiry"/>
+        <Property name="text" type="java.lang.String" value="Allergy 2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDateOfIssue">
+    <Component class="javax.swing.JTextField" name="txtAllergy1">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDateOfExpiry">
+    <Component class="javax.swing.JTextField" name="txtAllergy2">
     </Component>
     <Component class="javax.swing.JLabel" name="lblAccountBalance">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Blood tpe"/>
+        <Property name="text" type="java.lang.String" value="Allergy 3"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCreateDrivingLicense">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Create"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateDrivingLicenseActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblType">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="File"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtBloodType">
+    <Component class="javax.swing.JTextField" name="txtAllergy3">
     </Component>
     <Component class="javax.swing.JLabel" name="lblBankName">
       <Properties>
-        <Property name="text" type="java.lang.String" value="License Number"/>
+        <Property name="text" type="java.lang.String" value="Record Number"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHeader">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Fill Driver&apos;s license information"/>
+        <Property name="text" type="java.lang.String" value="View Medical information"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnUploadPicture">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jButton2"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUploadPictureActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

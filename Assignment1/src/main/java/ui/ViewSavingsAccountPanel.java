@@ -57,7 +57,7 @@ public class ViewSavingsAccountPanel extends javax.swing.JPanel {
         lblBankName.setText("Bank Name");
 
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeader.setText("Fill Savings Account Information");
+        lblHeader.setText("View Savings Account Information");
 
         txtType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
