@@ -46,78 +46,39 @@ public class ViewMedicalPanel extends javax.swing.JPanel {
         lblBankName = new javax.swing.JLabel();
         lblHeader = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(219, 219, 148));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         txtRecordNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRecordNumberActionPerformed(evt);
             }
         });
+        add(txtRecordNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 56, 248, -1));
 
+        lblRoutingNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblRoutingNumber.setText("Allergy 1");
+        add(lblRoutingNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 98, -1, -1));
 
+        lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountNumber.setText("Allergy 2");
+        add(lblAccountNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 136, -1, -1));
+        add(txtAllergy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 94, 250, -1));
+        add(txtAllergy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 132, 250, -1));
 
+        lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountBalance.setText("Allergy 3");
+        add(lblAccountBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 174, -1, -1));
+        add(txtAllergy3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 250, -1));
 
+        lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblBankName.setText("Record Number");
+        add(lblBankName, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 60, -1, -1));
 
+        lblHeader.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View Medical information");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRoutingNumber)
-                                    .addComponent(lblBankName))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtAllergy2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                            .addComponent(txtAllergy1)
-                                            .addComponent(txtAllergy3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtRecordNumber))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAccountNumber)
-                                    .addComponent(lblAccountBalance))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblHeader)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBankName)
-                    .addComponent(txtRecordNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoutingNumber)
-                    .addComponent(txtAllergy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccountNumber)
-                    .addComponent(txtAllergy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccountBalance)
-                    .addComponent(txtAllergy3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 21, 404, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtRecordNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecordNumberActionPerformed

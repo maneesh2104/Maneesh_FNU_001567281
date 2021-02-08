@@ -6,6 +6,16 @@
 package ui;
 
 import com.mycompany.assignment1.License;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.CropImageFilter;
+import java.awt.image.FilteredImageSource;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,7 +27,7 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
      * Creates new form ViewDrivingPanel
      */
     License driving;
-    public ViewDrivingPanel(License driving) {
+    public ViewDrivingPanel(License driving){
         initComponents();
         this.driving = driving;
         
@@ -25,6 +35,16 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
         txtDateOfExpiry.setText(driving.getDateOfExpiration());
         txtDateOfIssue.setText(driving.getDateOfIssue());
         txtLicenseNumber.setText(driving.getNumber());
+        try {
+            ImageIcon i = new ImageIcon(ImageIO.read(new File(driving.getFileName())));
+            BufferedImage img = ImageIO.read(new File(driving.getFileName()));
+            Image ig = img.getScaledInstance(450, 300,Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(ig);
+            jLabel1.setIcon(icon);
+        }
+        catch (Exception ex) {
+            System.out.println("ERROR");
+        }
     }
 
     /**
@@ -45,76 +65,47 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
         txtDateOfIssue = new javax.swing.JTextField();
         txtDateOfExpiry = new javax.swing.JTextField();
         lblAccountBalance = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(187, 187, 234));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(txtBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 169, 240, -1));
+
+        lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblBankName.setText("License Number");
+        add(lblBankName, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 60, -1, -1));
 
+        lblHeader.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View Driver's license information");
+        add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 21, 390, -1));
 
         txtLicenseNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLicenseNumberActionPerformed(evt);
             }
         });
+        add(txtLicenseNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 55, 241, -1));
 
+        lblRoutingNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRoutingNumber.setText("Date of Issue");
+        add(lblRoutingNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 98, -1, -1));
 
+        lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountNumber.setText("Date of Expiry");
+        add(lblAccountNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 136, -1, -1));
+        add(txtDateOfIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 93, 241, -1));
+        add(txtDateOfExpiry, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 131, 240, -1));
 
+        lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountBalance.setText("Blood tpe");
+        add(lblAccountBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 174, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 528, 178));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRoutingNumber)
-                                    .addComponent(lblBankName))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDateOfIssue)
-                                    .addComponent(txtLicenseNumber)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAccountNumber)
-                                    .addComponent(lblAccountBalance))
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                                    .addComponent(txtDateOfExpiry)))))
-                    .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblHeader)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBankName)
-                    .addComponent(txtLicenseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoutingNumber)
-                    .addComponent(txtDateOfIssue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccountNumber)
-                    .addComponent(txtDateOfExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccountBalance)
-                    .addComponent(txtBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setText("Uploaded Image");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 397, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLicenseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLicenseNumberActionPerformed
@@ -123,6 +114,8 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAccountBalance;
     private javax.swing.JLabel lblAccountNumber;
     private javax.swing.JLabel lblBankName;

@@ -49,32 +49,48 @@ public class ViewCheckingAccountPanel extends javax.swing.JPanel {
         txtRoutingNumber = new javax.swing.JTextField();
         txtAccountNumber = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(181, 167, 196));
+
+        lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountBalance.setText("Account Balance");
 
+        lblType.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblType.setText("Type");
         lblType.setToolTipText("");
 
+        txtBalance.setEditable(false);
+
+        lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblBankName.setText("Bank Name");
 
+        lblHeader.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View Checking Account Information");
 
+        txtType.setEditable(false);
         txtType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTypeActionPerformed(evt);
             }
         });
 
+        txtBankName.setEditable(false);
         txtBankName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBankNameActionPerformed(evt);
             }
         });
 
+        lblRoutingNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblRoutingNumber.setText("Routing Number");
 
+        lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountNumber.setText("Account Number");
+
+        txtRoutingNumber.setEditable(false);
+
+        txtAccountNumber.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -83,6 +99,7 @@ public class ViewCheckingAccountPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRoutingNumber)
@@ -101,11 +118,7 @@ public class ViewCheckingAccountPanel extends javax.swing.JPanel {
                             .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAccountNumber, txtBalance, txtBankName, txtRoutingNumber, txtType});
@@ -135,7 +148,7 @@ public class ViewCheckingAccountPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
                     .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

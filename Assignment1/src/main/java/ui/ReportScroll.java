@@ -6,6 +6,11 @@
 package ui;
 
 import com.mycompany.assignment1.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -55,7 +60,16 @@ public class ReportScroll extends javax.swing.JPanel {
         txtAllergy2.setText(medicalDetails.getAllergy2());
         txtAllergy3.setText(medicalDetails.getAllergy3());
         
-        
+        try {
+            ImageIcon i = new ImageIcon(ImageIO.read(new File(driving.getFileName())));
+            BufferedImage img = ImageIO.read(new File(driving.getFileName()));
+            Image ig = img.getScaledInstance(236, 131,Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(ig);
+            jLabel1.setIcon(icon);
+        }
+        catch (Exception ex) {
+            System.out.println("ERROR");
+        }
     }
 
     /**
@@ -133,149 +147,239 @@ public class ReportScroll extends javax.swing.JPanel {
         lblAccountNumber3 = new javax.swing.JLabel();
         txtAllergy1 = new javax.swing.JTextField();
         txtAllergy2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(136, 136, 212));
+
+        txtHeight.setEditable(false);
         txtHeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHeightActionPerformed(evt);
             }
         });
 
+        lblPhoneNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblPhoneNumber.setText("Phone Number");
 
+        txtWeight.setEditable(false);
+
+        txtLastName.setEditable(false);
         txtLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLastNameActionPerformed(evt);
             }
         });
 
+        lblDob.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblDob.setText("Date Of Birth");
 
+        txtPhoneNumber.setEditable(false);
+
+        txtSSN.setEditable(false);
+
+        txtDob.setEditable(false);
+
+        lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAge.setText("Age");
 
+        lblFirstName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblFirstName.setText("First Name");
 
+        lblHeight.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeight.setText("Height");
 
+        lblHeader.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View personal details");
 
+        lblWeight.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight.setText("Weight");
 
+        txtAge.setEditable(false);
+
+        lblSsn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblSsn.setText("SSN");
 
+        txtFirstName.setEditable(false);
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstNameActionPerformed(evt);
             }
         });
 
+        lblLastName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblLastName.setText("Last Name");
 
+        txtLicenseNumber.setEditable(false);
         txtLicenseNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLicenseNumberActionPerformed(evt);
             }
         });
 
+        lblRoutingNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRoutingNumber.setText("Date of Issue");
 
+        lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountNumber.setText("Date of Expiry");
 
+        txtDateOfIssue.setEditable(false);
+
+        txtDateOfExpiry.setEditable(false);
+
+        lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountBalance.setText("Blood tpe");
 
+        txtBloodType.setEditable(false);
+
+        lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblBankName.setText("License Number");
 
+        lblHeader1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeader1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader1.setText("View Driver's license information");
 
+        lblHeader2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeader2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader2.setText("View Address Information");
 
-        txtStreet.setEnabled(false);
+        txtStreet.setEditable(false);
         txtStreet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStreetActionPerformed(evt);
             }
         });
 
+        lblCity.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblCity.setText("City");
 
+        lblState.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblState.setText("State");
 
         txtCity.setEditable(false);
 
+        txtState.setEditable(false);
+
+        lblZip.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblZip.setText("Zip Code");
 
+        txtZip.setEditable(false);
+
+        lblStreet.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblStreet.setText("Street");
 
+        lblRoutingNumber1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRoutingNumber1.setText("Routing Number");
 
+        lblAccountNumber1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountNumber1.setText("Account Number");
 
+        txtRoutingNumber.setEditable(false);
+
+        txtAccountNumber.setEditable(false);
+
+        lblAccountBalance1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountBalance1.setText("Account Balance");
 
+        lblType.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblType.setText("Type");
         lblType.setToolTipText("");
 
+        txtBalance.setEditable(false);
+
+        lblBankName1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblBankName1.setText("Bank Name");
 
+        lblHeader3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeader3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader3.setText("View Checking Account Information");
 
+        txtType.setEditable(false);
         txtType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTypeActionPerformed(evt);
             }
         });
 
+        txtBankName.setEditable(false);
         txtBankName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBankNameActionPerformed(evt);
             }
         });
 
+        lblHeader4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeader4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader4.setText("View Savings Account Information");
 
+        txtType1.setEditable(false);
         txtType1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtType1ActionPerformed(evt);
             }
         });
 
+        txtBankName1.setEditable(false);
         txtBankName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBankName1ActionPerformed(evt);
             }
         });
 
+        lblRoutingNumber2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRoutingNumber2.setText("Routing Number");
 
+        lblAccountNumber2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountNumber2.setText("Account Number");
 
+        txtRoutingNumber1.setEditable(false);
+
+        txtAccountNumber1.setEditable(false);
+
+        lblAccountBalance2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountBalance2.setText("Account Balance");
 
+        txtBalance1.setEditable(false);
+
+        lblType1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblType1.setText("Type");
 
+        lblBankName2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblBankName2.setText("Bank Name");
 
+        lblAccountBalance3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountBalance3.setText("Allergy 3");
 
+        txtAllergy3.setEditable(false);
+
+        lblBankName3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblBankName3.setText("Record Number");
 
+        lblHeader5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblHeader5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader5.setText("View Medical information");
 
+        txtRecordNumber.setEditable(false);
         txtRecordNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRecordNumberActionPerformed(evt);
             }
         });
 
+        lblRoutingNumber3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblRoutingNumber3.setText("Allergy 1");
 
+        lblAccountNumber3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountNumber3.setText("Allergy 2");
+
+        txtAllergy1.setEditable(false);
+
+        txtAllergy2.setEditable(false);
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setText("Uploaded Image");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -295,12 +399,12 @@ public class ReportScroll extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblFirstName)
-                                    .addComponent(lblPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblDob)
                                     .addComponent(lblAge, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPhoneNumber))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,12 +418,11 @@ public class ReportScroll extends javax.swing.JPanel {
                                 .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblAccountNumber1)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblBankName1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblRoutingNumber1))
+                                    .addComponent(lblRoutingNumber1)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lblType)
-                                        .addComponent(lblAccountBalance1)))
+                                        .addComponent(lblAccountBalance1))
+                                    .addComponent(lblBankName1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtBankName, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
@@ -381,7 +484,7 @@ public class ReportScroll extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(lblHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(37, 37, 37)
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -397,7 +500,7 @@ public class ReportScroll extends javax.swing.JPanel {
                                     .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtZip, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblHeader2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
@@ -423,9 +526,17 @@ public class ReportScroll extends javax.swing.JPanel {
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(lblHeader5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(231, 231, 231))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAccountNumber1, txtBalance1, txtBankName1, txtRoutingNumber1, txtType1});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtDateOfExpiry, txtDateOfIssue, txtLicenseNumber});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,8 +597,7 @@ public class ReportScroll extends javax.swing.JPanel {
                                         .addGap(4, 4, 4)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblType))))
-                                .addGap(4, 4, 4)))
+                                            .addComponent(lblType))))))
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -519,50 +629,8 @@ public class ReportScroll extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblType1)
                             .addComponent(txtType1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblHeader1)
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblBankName))
-                            .addComponent(txtLicenseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblRoutingNumber))
-                            .addComponent(txtDateOfIssue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAccountNumber)
-                            .addComponent(txtDateOfExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAccountBalance)
-                            .addComponent(txtBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblHeader2)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblStreet)
-                                .addGap(24, 24, 24)
-                                .addComponent(lblCity)
-                                .addGap(34, 34, 34)
-                                .addComponent(lblState)
-                                .addGap(24, 24, 24)
-                                .addComponent(lblZip))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblHeader5)
                         .addGap(18, 18, 18)
@@ -580,7 +648,57 @@ public class ReportScroll extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAccountBalance3)
-                            .addComponent(txtAllergy3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(txtAllergy3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHeader1)
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(lblBankName))
+                                    .addComponent(txtLicenseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(lblRoutingNumber))
+                                    .addComponent(txtDateOfIssue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAccountNumber)
+                                    .addComponent(txtDateOfExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAccountBalance)
+                                    .addComponent(txtBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHeader2)
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblStreet)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(lblCity)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(lblState)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(lblZip))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(txtZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 65, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -626,6 +744,8 @@ public class ReportScroll extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAccountBalance;
     private javax.swing.JLabel lblAccountBalance1;
     private javax.swing.JLabel lblAccountBalance2;

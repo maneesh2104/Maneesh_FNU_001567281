@@ -58,35 +58,60 @@ public class ViewPersonPanel extends javax.swing.JPanel {
         lblWeight = new javax.swing.JLabel();
         lblSsn = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(201, 103, 103));
+
+        txtLastName.setEditable(false);
+
+        txtPhoneNumber.setEditable(false);
+
+        txtDob.setEditable(false);
+
+        lblFirstName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblFirstName.setText("First Name");
 
+        lblHeader.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View personal details");
 
+        txtAge.setEditable(false);
+
+        txtFirstName.setEditable(false);
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstNameActionPerformed(evt);
             }
         });
 
+        lblLastName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblLastName.setText("Last Name");
 
+        txtHeight.setEditable(false);
         txtHeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHeightActionPerformed(evt);
             }
         });
 
+        lblPhoneNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblPhoneNumber.setText("Phone Number");
 
+        txtWeight.setEditable(false);
+
+        lblDob.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblDob.setText("Date Of Birth");
 
+        txtSSN.setEditable(false);
+
+        lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAge.setText("Age");
 
+        lblHeight.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblHeight.setText("Height");
 
+        lblWeight.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblWeight.setText("Weight");
 
+        lblSsn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblSsn.setText("SSN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -96,29 +121,28 @@ public class ViewPersonPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPhoneNumber)
-                    .addComponent(lblDob)
-                    .addComponent(lblLastName)
-                    .addComponent(lblFirstName)
-                    .addComponent(lblWeight)
-                    .addComponent(lblHeight)
-                    .addComponent(lblAge)
-                    .addComponent(lblSsn))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPhoneNumber)
-                    .addComponent(txtDob)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                    .addComponent(txtFirstName)
-                    .addComponent(txtAge)
-                    .addComponent(txtWeight)
-                    .addComponent(txtHeight)
-                    .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(lblDob)
+                            .addComponent(lblLastName)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblWeight)
+                            .addComponent(lblHeight)
+                            .addComponent(lblAge)
+                            .addComponent(lblSsn))
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPhoneNumber)
+                            .addComponent(txtDob)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                            .addComponent(txtFirstName)
+                            .addComponent(txtAge)
+                            .addComponent(txtWeight)
+                            .addComponent(txtHeight)
+                            .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAge, txtDob, txtFirstName, txtHeight, txtLastName, txtPhoneNumber, txtSSN, txtWeight});
@@ -160,7 +184,7 @@ public class ViewPersonPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSsn)
                     .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

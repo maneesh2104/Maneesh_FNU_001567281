@@ -24,6 +24,18 @@ public class MainJFrame extends javax.swing.JFrame {
     Medical medicalDetails;
     public MainJFrame() {
         initComponents();
+                savingsAccount = new Account();
+
+                person = new Person();
+                        address = new Address();
+                                checkingAccount = new Account();
+                                        drivingLicense = new License();
+                                                   medicalDetails = new Medical();
+
+
+
+
+
     }
 
     /**
@@ -54,15 +66,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        splitPanel.setBackground(new java.awt.Color(229, 190, 190));
         splitPanel.setRightComponent(workArea);
 
-        btnCreate.setText("Create Perosnal Details");
+        controlPanel.setBackground(new java.awt.Color(158, 200, 200));
+
+        btnCreate.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnCreate.setText("Create Personal Details");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
 
+        btnView.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnView.setText("View Personal Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +87,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateAddress.setText("Create Address Details");
         btnCreateAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnViewAddress.setText("View Address Details");
         btnViewAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +103,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewReport.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnViewReport.setText("View Report");
         btnViewReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +111,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateSavingsAccount.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateSavingsAccount.setText("Create Savings Account");
         btnCreateSavingsAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +119,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewSavingsAccount.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnViewSavingsAccount.setText("View Savings Account");
         btnViewSavingsAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +127,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateCheckingAccount.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateCheckingAccount.setText("Create Checking Account");
         btnCreateCheckingAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +135,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewCheckingAccount.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnViewCheckingAccount.setText("View Checking Account");
         btnViewCheckingAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +143,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jButton1.setText("Create Driving Profile");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +151,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jButton2.setText("View Driving Profile");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateMedical.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateMedical.setText("Create Medical Profile");
         btnCreateMedical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +167,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewMedicalDetails.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnViewMedicalDetails.setText("View Medical Details");
         btnViewMedicalDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,61 +180,57 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnCreate)
-                        .addComponent(btnViewSavingsAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCreateSavingsAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnView, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnViewReport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnViewAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(btnViewCheckingAccount, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCreateCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreateMedical)
-                    .addComponent(btnViewMedicalDetails))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(btnCreate)
+                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreateAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewReport, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreateSavingsAccount)
+                    .addComponent(btnViewSavingsAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreateCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewCheckingAccount)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreateMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewMedicalDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreateSavingsAccount, btnViewSavingsAccount});
-
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnViewCheckingAccount, jButton1, jButton2});
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnCreateAddress, btnCreateCheckingAccount, btnCreateMedical, btnCreateSavingsAccount, btnView, btnViewAddress, btnViewCheckingAccount, btnViewMedicalDetails, btnViewReport, btnViewSavingsAccount, jButton1, jButton2});
 
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btnCreate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnView)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnCreateAddress)
                 .addGap(12, 12, 12)
                 .addComponent(btnViewAddress)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnViewReport)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnCreateSavingsAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnViewSavingsAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnCreateCheckingAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnViewCheckingAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnCreateMedical)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnViewMedicalDetails)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(btnViewMedicalDetails))
         );
+
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCreate, btnCreateAddress, btnCreateCheckingAccount, btnCreateMedical, btnCreateSavingsAccount, btnView, btnViewAddress, btnViewCheckingAccount, btnViewMedicalDetails, btnViewReport, btnViewSavingsAccount, jButton1, jButton2});
 
         splitPanel.setLeftComponent(controlPanel);
 
@@ -228,7 +252,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        person = new Person();
         CreatePersonPanel createPersonPanel = new CreatePersonPanel(person);
         splitPanel.setRightComponent(createPersonPanel);
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -241,7 +264,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCreateAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAddressActionPerformed
         // TODO add your handling code here:
-        address = new Address();
         CreateAddressPanel addressPanel = new CreateAddressPanel(address);
         splitPanel.setRightComponent(addressPanel);
     }//GEN-LAST:event_btnCreateAddressActionPerformed
@@ -260,7 +282,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCreateSavingsAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSavingsAccountActionPerformed
         // TODO add your handling code here:
-        savingsAccount = new Account();
         CreateSavingAccountPanel savingsPanel = new CreateSavingAccountPanel(savingsAccount);
         splitPanel.setRightComponent(savingsPanel);
     }//GEN-LAST:event_btnCreateSavingsAccountActionPerformed
@@ -273,7 +294,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCreateCheckingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCheckingAccountActionPerformed
         // TODO add your handling code here:
-        checkingAccount = new Account();
         CreateCheckingAccountPanel createCheckingPanel;
         createCheckingPanel = new CreateCheckingAccountPanel(checkingAccount);
         splitPanel.setRightComponent(createCheckingPanel);
@@ -287,7 +307,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        drivingLicense = new License();
         CreateDrivingPanel createDrivingPanel = new CreateDrivingPanel(drivingLicense);
         splitPanel.setRightComponent(createDrivingPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -300,7 +319,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnCreateMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateMedicalActionPerformed
         // TODO add your handling code here:
-           medicalDetails = new Medical();
         CreateMedicalPanel medicalPanel = new CreateMedicalPanel(medicalDetails);
         splitPanel.setRightComponent(medicalPanel);
     }//GEN-LAST:event_btnCreateMedicalActionPerformed

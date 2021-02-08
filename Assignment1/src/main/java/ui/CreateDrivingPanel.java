@@ -53,18 +53,24 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
         lblHeader = new javax.swing.JLabel();
         btnUploadPicture = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(187, 187, 234));
+
         txtLicenseNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLicenseNumberActionPerformed(evt);
             }
         });
 
+        lblRoutingNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblRoutingNumber.setText("Date of Issue");
 
+        lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountNumber.setText("Date of Expiry");
 
+        lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountBalance.setText("Blood tpe");
 
+        btnCreateDrivingLicense.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         btnCreateDrivingLicense.setText("Create");
         btnCreateDrivingLicense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,16 +78,19 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
             }
         });
 
+        lblType.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblType.setText("File");
         lblType.setToolTipText("");
 
+        lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblBankName.setText("License Number");
 
+        lblHeader.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("Fill Driver's license information");
 
-        btnUploadPicture.setText("jButton2");
+        btnUploadPicture.setText("Upload Image");
         btnUploadPicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadPictureActionPerformed(evt);
@@ -93,18 +102,17 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblRoutingNumber)
                                     .addComponent(lblBankName))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDateOfIssue)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDateOfIssue, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                                     .addComponent(txtLicenseNumber)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,15 +120,15 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
                                     .addComponent(lblAccountBalance)
                                     .addComponent(lblType))
                                 .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                                    .addComponent(txtDateOfExpiry)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnUploadPicture)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCreateDrivingLicense, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnUploadPicture)
+                                    .addComponent(txtDateOfExpiry, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(txtBloodType)))
+                            .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnCreateDrivingLicense, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +157,7 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
                     .addComponent(btnUploadPicture))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreateDrivingLicense)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,23 +180,8 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
-        txtDateOfExpiry.setText(filename);
         driving.setFileName(filename);
-        try {
-            //        ImageIcon ii=new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
-            ImageIcon i = new ImageIcon(ImageIO.read(new File(f.getAbsolutePath())));
-            BufferedImage img = ImageIO.read(new File(f.getAbsolutePath()));
-            img.getScaledInstance(150, 150,Image.SCALE_SMOOTH);
-
-            ImageIcon icon = new ImageIcon(img);
-            JLabel label = new JLabel(icon);
-
-            JOptionPane.showMessageDialog(null, label);
-
-            //        jLabel1.setIcon(ii);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        
     }//GEN-LAST:event_btnUploadPictureActionPerformed
 
 
