@@ -88,6 +88,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCity">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtState">
     </Component>
@@ -110,6 +113,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtStreet">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStreetActionPerformed"/>
       </Events>

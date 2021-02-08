@@ -48,6 +48,8 @@ public class ViewAddressPanel extends javax.swing.JPanel {
 
         lblState.setText("State");
 
+        txtCity.setEditable(false);
+
         lblZip.setText("Zip Code");
 
         lblStreet.setText("Street");
@@ -55,6 +57,7 @@ public class ViewAddressPanel extends javax.swing.JPanel {
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View Address Information");
 
+        txtStreet.setEnabled(false);
         txtStreet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStreetActionPerformed(evt);

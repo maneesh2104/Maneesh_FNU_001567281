@@ -5,6 +5,7 @@
  */
 package ui;
 
+import com.mycompany.assignment1.License;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -24,8 +25,10 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateDrivingPanel
      */
-    public CreateDrivingPanel() {
-        initComponents();
+    License driving;
+    public CreateDrivingPanel(License driving) {
+        this.driving = driving;
+        initComponents();   
     }
 
     /**
@@ -37,22 +40,22 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtBankName = new javax.swing.JTextField();
+        txtLicenseNumber = new javax.swing.JTextField();
         lblRoutingNumber = new javax.swing.JLabel();
         lblAccountNumber = new javax.swing.JLabel();
-        txtRoutingNumber = new javax.swing.JTextField();
-        txtAccountNumber = new javax.swing.JTextField();
+        txtDateOfIssue = new javax.swing.JTextField();
+        txtDateOfExpiry = new javax.swing.JTextField();
         lblAccountBalance = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnCreateDrivingLicense = new javax.swing.JButton();
         lblType = new javax.swing.JLabel();
-        txtBalance = new javax.swing.JTextField();
+        txtBloodType = new javax.swing.JTextField();
         lblBankName = new javax.swing.JLabel();
         lblHeader = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnUploadPicture = new javax.swing.JButton();
 
-        txtBankName.addActionListener(new java.awt.event.ActionListener() {
+        txtLicenseNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBankNameActionPerformed(evt);
+                txtLicenseNumberActionPerformed(evt);
             }
         });
 
@@ -62,10 +65,10 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
 
         lblAccountBalance.setText("Blood tpe");
 
-        jButton1.setText("Create");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateDrivingLicense.setText("Create");
+        btnCreateDrivingLicense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCreateDrivingLicenseActionPerformed(evt);
             }
         });
 
@@ -78,10 +81,10 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("Fill Driver's license information");
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUploadPicture.setText("jButton2");
+        btnUploadPicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUploadPictureActionPerformed(evt);
             }
         });
 
@@ -101,27 +104,24 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
                                     .addComponent(lblBankName))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtDateOfIssue)
+                                    .addComponent(txtLicenseNumber)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblAccountNumber)
                                     .addComponent(lblAccountBalance)
                                     .addComponent(lblType))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBalance, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                    .addComponent(txtAccountNumber)
+                                    .addComponent(txtBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                                    .addComponent(txtDateOfExpiry)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(btnUploadPicture)
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addComponent(lblHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCreateDrivingLicense, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBankName, txtRoutingNumber});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -130,49 +130,51 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBankName)
-                    .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLicenseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRoutingNumber)
-                    .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDateOfIssue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAccountNumber)
-                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDateOfExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAccountBalance)
-                    .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
-                    .addComponent(jButton2))
+                    .addComponent(btnUploadPicture))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnCreateDrivingLicense)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBankNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBankNameActionPerformed
+    private void txtLicenseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLicenseNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBankNameActionPerformed
+    }//GEN-LAST:event_txtLicenseNumberActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCreateDrivingLicenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateDrivingLicenseActionPerformed
         // TODO add your handling code here:
+        
+        
 //        checking.setAccountNumber(txtAccountNumber.getText());
 //        checking.setBalance(txtBalance.getText());
 //        checking.setBankName(txtBankName.getText());
 //        checking.setRoutingNumber(txtRoutingNumber.getText());
 //        checking.setType(txtType.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCreateDrivingLicenseActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnUploadPictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPictureActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
     chooser.showOpenDialog(null);
     File f = chooser.getSelectedFile();
     String filename = f.getAbsolutePath();
-    txtAccountNumber.setText(filename);
+    txtDateOfExpiry.setText(filename);
     try {
 //        ImageIcon ii=new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
         ImageIcon i = new ImageIcon(ImageIO.read(new File(f.getAbsolutePath())));
@@ -188,21 +190,21 @@ public class CreateDrivingPanel extends javax.swing.JPanel {
     } catch (Exception ex) {
         ex.printStackTrace();
     }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnUploadPictureActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCreateDrivingLicense;
+    private javax.swing.JButton btnUploadPicture;
     private javax.swing.JLabel lblAccountBalance;
     private javax.swing.JLabel lblAccountNumber;
     private javax.swing.JLabel lblBankName;
     private javax.swing.JLabel lblHeader;
     private javax.swing.JLabel lblRoutingNumber;
     private javax.swing.JLabel lblType;
-    private javax.swing.JTextField txtAccountNumber;
-    private javax.swing.JTextField txtBalance;
-    private javax.swing.JTextField txtBankName;
-    private javax.swing.JTextField txtRoutingNumber;
+    private javax.swing.JTextField txtBloodType;
+    private javax.swing.JTextField txtDateOfExpiry;
+    private javax.swing.JTextField txtDateOfIssue;
+    private javax.swing.JTextField txtLicenseNumber;
     // End of variables declaration//GEN-END:variables
 }

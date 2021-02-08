@@ -20,6 +20,7 @@ public class MainJFrame extends javax.swing.JFrame {
     Address address;
     Account savingsAccount;
     Account checkingAccount;
+    License drivingLicense;
     public MainJFrame() {
         initComponents();
     }
@@ -134,6 +135,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("View Driving Profile");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -268,9 +274,16 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CreateDrivingPanel viewDrivingPanel = new CreateDrivingPanel();
-        splitPanel.setRightComponent(viewDrivingPanel);
+        drivingLicense = new License();
+        CreateDrivingPanel createDrivingPanel = new CreateDrivingPanel(drivingLicense);
+        splitPanel.setRightComponent(createDrivingPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ViewDrivingPanel viewDrivingPanel = new ViewDrivingPanel();
+        splitPanel.setRightComponent(viewDrivingPanel);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

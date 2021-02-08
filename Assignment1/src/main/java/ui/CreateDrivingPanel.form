@@ -29,8 +29,8 @@
                               </Group>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtBankName" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtRoutingNumber" linkSize="1" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
+                                  <Component id="txtDateOfIssue" max="32767" attributes="0"/>
+                                  <Component id="txtLicenseNumber" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -39,12 +39,12 @@
                                   <Component id="lblAccountBalance" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblType" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtBalance" alignment="0" pref="260" max="32767" attributes="0"/>
-                                  <Component id="txtAccountNumber" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtBloodType" pref="384" max="32767" attributes="0"/>
+                                  <Component id="txtDateOfExpiry" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnUploadPicture" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -52,7 +52,7 @@
                       </Group>
                   </Group>
                   <Component id="lblHeader" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jButton1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btnCreateDrivingLicense" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -66,39 +66,39 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblBankName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBankName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLicenseNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDateOfIssue" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDateOfExpiry" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAccountBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBalance" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBloodType" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnUploadPicture" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnCreateDrivingLicense" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtBankName">
+    <Component class="javax.swing.JTextField" name="txtLicenseNumber">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBankNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLicenseNumberActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRoutingNumber">
@@ -111,21 +111,21 @@
         <Property name="text" type="java.lang.String" value="Date of Expiry"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtRoutingNumber">
+    <Component class="javax.swing.JTextField" name="txtDateOfIssue">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtAccountNumber">
+    <Component class="javax.swing.JTextField" name="txtDateOfExpiry">
     </Component>
     <Component class="javax.swing.JLabel" name="lblAccountBalance">
       <Properties>
         <Property name="text" type="java.lang.String" value="Blood tpe"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnCreateDrivingLicense">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateDrivingLicenseActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblType">
@@ -135,7 +135,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBalance">
+    <Component class="javax.swing.JTextField" name="txtBloodType">
     </Component>
     <Component class="javax.swing.JLabel" name="lblBankName">
       <Properties>
@@ -148,12 +148,12 @@
         <Property name="text" type="java.lang.String" value="Fill Driver&apos;s license information"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnUploadPicture">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUploadPictureActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
