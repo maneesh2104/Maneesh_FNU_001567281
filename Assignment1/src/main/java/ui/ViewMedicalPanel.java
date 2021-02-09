@@ -5,7 +5,7 @@
  */
 package ui;
 
-import com.mycompany.assignment1.Medical;
+import Models.Medical;
 
 /**
  *
@@ -49,6 +49,7 @@ public class ViewMedicalPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(219, 219, 148));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtRecordNumber.setEditable(false);
         txtRecordNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRecordNumberActionPerformed(evt);
@@ -63,12 +64,18 @@ public class ViewMedicalPanel extends javax.swing.JPanel {
         lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountNumber.setText("Allergy 2");
         add(lblAccountNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 136, -1, -1));
+
+        txtAllergy1.setEditable(false);
         add(txtAllergy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 94, 250, -1));
+
+        txtAllergy2.setEditable(false);
         add(txtAllergy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 132, 250, -1));
 
         lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAccountBalance.setText("Allergy 3");
         add(lblAccountBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 174, -1, -1));
+
+        txtAllergy3.setEditable(false);
         add(txtAllergy3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 250, -1));
 
         lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N

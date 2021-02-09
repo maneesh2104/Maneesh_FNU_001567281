@@ -5,7 +5,11 @@
  */
 package ui;
 
-import com.mycompany.assignment1.*;
+import Models.Address;
+import Models.Person;
+import Models.Medical;
+import Models.Account;
+import Models.License;
 
 /**
  *

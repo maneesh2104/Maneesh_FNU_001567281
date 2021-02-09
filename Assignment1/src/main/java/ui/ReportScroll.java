@@ -5,7 +5,11 @@
  */
 package ui;
 
-import com.mycompany.assignment1.*;
+import Models.Address;
+import Models.License;
+import Models.Person;
+import Models.Account;
+import Models.Medical;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;

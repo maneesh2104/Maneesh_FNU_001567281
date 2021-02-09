@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
-import com.mycompany.assignment1.Address;
+import Models.Address;
 
 
 /**

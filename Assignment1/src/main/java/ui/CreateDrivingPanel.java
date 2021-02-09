@@ -5,7 +5,7 @@
  */
 package ui;
 
-import com.mycompany.assignment1.License;
+import Models.License;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;

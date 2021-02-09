@@ -5,7 +5,7 @@
  */
 package ui;
 
-import com.mycompany.assignment1.License;
+import Models.License;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.CropImageFilter;
@@ -70,6 +70,8 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(187, 187, 234));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBloodType.setEditable(false);
         add(txtBloodType, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 169, 240, -1));
 
         lblBankName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -81,6 +83,7 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
         lblHeader.setText("View Driver's license information");
         add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 21, 390, -1));
 
+        txtLicenseNumber.setEditable(false);
         txtLicenseNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLicenseNumberActionPerformed(evt);
@@ -95,7 +98,11 @@ public class ViewDrivingPanel extends javax.swing.JPanel {
         lblAccountNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAccountNumber.setText("Date of Expiry");
         add(lblAccountNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 136, -1, -1));
+
+        txtDateOfIssue.setEditable(false);
         add(txtDateOfIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 93, 241, -1));
+
+        txtDateOfExpiry.setEditable(false);
         add(txtDateOfExpiry, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 131, 240, -1));
 
         lblAccountBalance.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N

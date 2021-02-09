@@ -5,7 +5,8 @@
  */
 package ui;
 
-import com.mycompany.assignment1.*;
+import Models.Address;
+import Models.Person;
 
 /**
  *
