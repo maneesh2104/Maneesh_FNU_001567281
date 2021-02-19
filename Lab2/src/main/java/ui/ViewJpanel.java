@@ -196,8 +196,6 @@ public class ViewJpanel extends javax.swing.JPanel {
          txtBP.setText(String.valueOf(selected.getBloodPressure()));
          txtOulse.setText(String.valueOf(selected.getPulse()));
          txtDate.setText(selected.getDate());
-
-         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBPActionPerformed
