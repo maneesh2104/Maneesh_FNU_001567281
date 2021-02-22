@@ -19,21 +19,22 @@ public class MainTestClass {
     public static void main(String[] args) {
         PatientList patientList = new PatientList();
 
-        System.out.println("Hi welcome to Part 2");
-        System.out.println("For addding new vital signs please press 1 for viewing history please press 2 \n Enter 3 to check vital signs \n Press 4 to exit");
+        System.out.println("----------------Welcome to patient dashboard----------------");
+        displayInputMessages();
 
         Scanner scanner = new Scanner(System.in);
         int userChoice = 1;
+        
 
         while (userChoice != 4) {
             userChoice = scanner.nextInt();
             switch (userChoice) {
                 case 1:
-                    System.out.println("Please neter patient name for whom you want the view history of");
+                    System.out.println("Please enter patient name for whom you want the view history of");
                     String patientNameGet = scanner.next();
                     Patient patientGet = patientList.getPatient(patientNameGet);
                     patientGet.displayHistory();
-                    System.out.println("For addding new vital signs please press 1 for viewing history please press 2 \n Enter 3 to exit \n");
+                    displayInputMessages();
                     break;
 
                 case 2:
@@ -72,7 +73,7 @@ public class MainTestClass {
                     // Adding Vital sign to patients history
                     patient.addVitalSign(vitalSigns);
                     System.out.println("-----------Vital signs has been added sucessfully----------");
-                    System.out.println("For addding new vital signs please press 1 for viewing history please press 2 \n Enter 3 to exit \n");
+                    displayInputMessages();
                     break;
                 case 3:
                     
@@ -83,11 +84,16 @@ public class MainTestClass {
                     else{
                         System.out.println("Invalid Vital sign");
                     }
+                    displayInputMessages();
                     break;
+                default:
+                    System.out.println("Please check the options and try again!! INVALID INPUT!!");
                     
-                    
-                    }
             }
+                
+            }
+        System.out.println("Thank you, please do visit us again!");
+        
         }
 
     private static boolean checkPatientVitals(Scanner scanner, PatientList patientList) {
@@ -98,7 +104,9 @@ public class MainTestClass {
         String patientName = scanner.next();
         Patient patient = patientList.getPatient(patientName);
         
-        System.out.println("Please enter your vital sign attribute: ");
+        System.out.println("Hi " + patientName.toUpperCase() + " welcome to the checking portal");
+        
+        System.out.println("Please enter the vital sign you want to check: ");
         System.out.println("\n\"RespiratoryRate\"");
         System.out.println("\"HeartRate\"");
         System.out.println("\"BloodPressure\"");
@@ -112,18 +120,28 @@ public class MainTestClass {
             return latestSign.isThisVitalSignNormal("RespiratoryRate");
         }
         else if(selectedVitalString.equalsIgnoreCase("HeartRate")) {
-            
+            return latestSign.isThisVitalSignNormal("HeartRate");
         }
         else if (selectedVitalString.equalsIgnoreCase("BloodPressure")){
-            
+            return latestSign.isThisVitalSignNormal("BloodPressure");
         }
         else if (selectedVitalString.equalsIgnoreCase("Weight")) {
-            
+             return latestSign.isThisVitalSignNormal("Weight");
         }
         
         return false;
         
         
+        
+    }
+
+    private static void displayInputMessages() {
+        // Function to display user input menu
+        System.out.println("\nSelect from below options: ");
+        System.out.println("\t 1 - View existing records. ");
+        System.out.println("\t 2 - Add a new record.");
+        System.out.println("\t 3 - Check vital sign status");
+        System.out.println("\t 4 - To Quit the application.");
         
     }
 }
