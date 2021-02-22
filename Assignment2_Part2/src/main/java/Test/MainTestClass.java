@@ -25,7 +25,7 @@ public class MainTestClass {
         Scanner scanner = new Scanner(System.in);
         int userChoice = 1;
 
-        while (userChoice != 3) {
+        while (userChoice != 4) {
             userChoice = scanner.nextInt();
             switch (userChoice) {
                 case 1:
@@ -75,10 +75,55 @@ public class MainTestClass {
                     System.out.println("For addding new vital signs please press 1 for viewing history please press 2 \n Enter 3 to exit \n");
                     break;
                 case 3:
-                    System.out.println("----------Checking Vitals signs for patient----------");
+                    
+                    boolean result = checkPatientVitals(scanner, patientList);
+                    if (result == true){
+                        System.out.println("Valid Vital sign");
+                    }
+                    else{
+                        System.out.println("Invalid Vital sign");
+                    }
+                    break;
                     
                     
                     }
             }
         }
+
+    private static boolean checkPatientVitals(Scanner scanner, PatientList patientList) {
+        System.out.println("----------Checking Vitals signs for patient----------");
+        
+        //Get patient name
+        System.out.println("Enter patient name");
+        String patientName = scanner.next();
+        Patient patient = patientList.getPatient(patientName);
+        
+        System.out.println("Please enter your vital sign attribute: ");
+        System.out.println("\n\"RespiratoryRate\"");
+        System.out.println("\"HeartRate\"");
+        System.out.println("\"BloodPressure\"");
+        System.out.println("\"Weight\"");
+        VitalSigns latestSign = patient.getLatestVitalSign();
+
+        
+        String selectedVitalString = scanner.next();
+        
+        if (selectedVitalString.equalsIgnoreCase("RespiratoryRate")){
+            return latestSign.isThisVitalSignNormal("RespiratoryRate");
+        }
+        else if(selectedVitalString.equalsIgnoreCase("HeartRate")) {
+            
+        }
+        else if (selectedVitalString.equalsIgnoreCase("BloodPressure")){
+            
+        }
+        else if (selectedVitalString.equalsIgnoreCase("Weight")) {
+            
+        }
+        
+        return false;
+        
+        
+        
+    }
 }

@@ -30,6 +30,7 @@ public class Patient {
         history.addNewVitalList(sign);
     }
     
+    // Function to display patients vital sign history
     public void displayHistory() {
         System.out.println("----------------Printing history of vitals of " + this.getName().toUpperCase() + ":----------------");
         for (VitalSigns sign : history.history) {
@@ -39,5 +40,9 @@ public class Patient {
             System.out.println("Blood pressure: " + sign.getBloodPressure());
             System.out.println("Weight in kgs: " + sign.getWeight());
         }
+    }
+    
+    public VitalSigns getLatestVitalSign(){
+        return history.history.get(history.history.size() - 1);
     }
 }

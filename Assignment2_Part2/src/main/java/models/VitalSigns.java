@@ -64,4 +64,70 @@ public class VitalSigns {
         this.weight = weight;
     }
     
+    public boolean isThisVitalSignNormal(String signType){
+        
+        //Check what is the selected vital sigh type
+        
+        switch (signType.toLowerCase()){
+            
+            case "respiratoryrate":
+                return isRespiratoryRateNormal();
+            default:
+                return false;
+        }
+        
+    }
+    
+    public boolean isRespiratoryRateNormal(){
+        double age = this.age;
+        
+        if (age == 0){
+            if (resporatoryRate >= 30 && resporatoryRate <= 50){
+                return true;
+            }
+            else if(age == 1){
+                return false;
+            }    
+        }
+        else if(age <= 1){
+            if (resporatoryRate >= 20 && resporatoryRate <= 30){
+                return true;
+            }
+            else if(age == 1){
+                return false;
+            }
+        }
+        else if(age >=2 && age <=3){
+            if (resporatoryRate >= 20 && resporatoryRate <= 30){
+                return true;
+            }
+            else if(age == 1){
+                return false;
+            }
+        }
+        else if(age >=3 && age <=5){
+            if (resporatoryRate >= 20 && resporatoryRate <= 30){
+                return true;
+            }
+            else if(age == 1){
+                return false;
+            }
+        }
+        else{
+            if (resporatoryRate >= 12 && resporatoryRate <= 20){
+                return true;
+            }
+            else if(age == 1){
+                return false;
+            }
+        }
+        
+        return false;
+    }
+        
+//        switch(age){
+//            
+//        }
+    
+    
 }
