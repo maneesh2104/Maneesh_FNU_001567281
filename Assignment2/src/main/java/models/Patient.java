@@ -78,10 +78,6 @@ public class Patient {
                 return false;
             }
         }
-
-        
-        
-        
         
         return true;
     }

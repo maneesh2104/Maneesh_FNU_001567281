@@ -22,7 +22,7 @@ public class TestIsNormal {
             System.out.println("Please enter patient name");
 
             Patient patient = new Patient();
-            patient.setName(scanner.nextLine());
+            patient.setName(scanner.next());
 
             VitalSigns vitalSigns = new VitalSigns();
 
@@ -43,7 +43,6 @@ public class TestIsNormal {
 
             if (monthOrYear.equalsIgnoreCase("Y")) {
                 System.out.println("Enter the age");
-
                 vitalSigns.setAge(scanner.nextDouble());
             } else {
                 System.out.println("Enter the age in months");
@@ -64,8 +63,6 @@ public class TestIsNormal {
             if (!isContinue.equalsIgnoreCase("y")){
                 flag = false;
             }
-
-            
 
         }
 
