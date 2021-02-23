@@ -33,16 +33,38 @@ public class Patient {
     // Function to display patients vital sign history
     public void displayHistory() {
         System.out.println("----------------Printing history of vitals of " + this.getName().toUpperCase() + ":----------------");
+        
+        //Getting the vital history object and iterating through it
+        int i = 0;
         for (VitalSigns sign : history.history) {
-            System.out.println("\nAge: " + sign.getAge());
+            System.out.println("\nRecord number: "+ ++i);
+            System.out.println("Vital collect on Timestamp: " + sign.timestamp);
+            double age = sign.getAge();
+            int resAge = 0;
+            if (age < 1){
+                resAge = (int) (age * 12);
+                System.out.println("Age: " + resAge + " Months");
+
+            }
+            else{
+                resAge = (int) (age);
+                System.out.println("Age: " + resAge + " Years");
+            }
             System.out.println("Respiratory rate: " + sign.getResporatoryRate());
             System.out.println("Heart rate: " + sign.getHeartRate());
             System.out.println("Blood pressure: " + sign.getBloodPressure());
             System.out.println("Weight in kgs: " + sign.getWeight());
+            
         }
     }
     
     public VitalSigns getLatestVitalSign(){
-        return history.history.get(history.history.size() - 1);
+        //Check if history object has any elements for IOB error
+        if (!(history.history.size() < 1)){
+            return history.history.get(history.history.size() - 1);
+        }
+        else{
+            return null;
+        }
     }
 }

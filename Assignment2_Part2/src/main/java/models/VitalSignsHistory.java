@@ -25,7 +25,6 @@ public class VitalSignsHistory {
     }
     
     public VitalSigns addNewVitalList(VitalSigns sign){
-//         VitalSigns newSign = new VitalSigns();
          history.add(sign);
          return sign;
     }

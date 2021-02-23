@@ -22,22 +22,25 @@ public class PatientList {
         this.patientList = patientList;
     }
     
-    public Patient getPatient(String name){
+    public Patient getPatient(String name, boolean displayFlag){
+        //Check if patient already exists
         for (Patient patient: this.patientList){
             if (patient.getName().equalsIgnoreCase(name)){
                 return patient;
             }
         }
-        Patient newPatient = new Patient();
-        newPatient.setName(name);
-        patientList.add(newPatient);
-        return newPatient;
+        //For display senrios do not create new patient objects
+        if (displayFlag){
+            //return null if we are using it for displaying
+            return null;
+        }
+        else{
+            //Create new patient if patient does not exist
+            Patient newPatient = new Patient();
+            newPatient.setName(name);
+            patientList.add(newPatient);
+            return newPatient;
+        }   
     }
-    
-    
-    
-    
-    
-    
-    
+      
 }

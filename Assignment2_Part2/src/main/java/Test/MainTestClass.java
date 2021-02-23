@@ -5,6 +5,8 @@
  */
 package Test;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import models.Patient;
 import models.PatientList;
@@ -30,53 +32,28 @@ public class MainTestClass {
             userChoice = scanner.nextInt();
             switch (userChoice) {
                 case 1:
+                    if (patientList.getPatientList().isEmpty()){
+                        System.out.println("No patients currently present");
+                        displayInputMessages();
+                        break;
+                    }
                     System.out.println("Please enter patient name for whom you want the view history of");
                     String patientNameGet = scanner.next();
-                    Patient patientGet = patientList.getPatient(patientNameGet);
+                    Patient patientGet = patientList.getPatient(patientNameGet, true);
+                    if (patientGet == null){
+                        System.out.println("Patient with that name does not exist");
+                        displayInputMessages();
+                        break;
+                    }
                     patientGet.displayHistory();
                     displayInputMessages();
                     break;
 
                 case 2:
-                    System.out.println("-----------Patient Details-----------");
-                    System.out.println("Please enter patient name");
-                    String patientName = scanner.next();
-                    Patient patient = patientList.getPatient(patientName);
-                    System.out.println("-----------Vital Sign Details-----------");
-                    System.out.println("Please enter vital signs");
-
-                    VitalSigns vitalSigns = new VitalSigns();
-                    System.out.println("Please enter current Respiratory rate");
-                    vitalSigns.setResporatoryRate(scanner.nextInt());
-
-                    System.out.println("Please enter current Heart rate");
-                    vitalSigns.setHeartRate(scanner.nextInt());
-
-                    System.out.println("Please enter current Systolic Blood Pressure");
-                    vitalSigns.setBloodPressure(scanner.nextInt());
-
-                    System.out.println("Please enter current weight in KG");
-                    vitalSigns.setWeight(scanner.nextDouble());
-
-                    System.out.println("If you want to enter age in months please enter M else enter Y");
-                    String monthOrYear = scanner.next();
-
-                    if (monthOrYear.equalsIgnoreCase("Y")) {
-                        System.out.println("Enter the age");
-                        vitalSigns.setAge(scanner.nextDouble());
-                    } else {
-                        System.out.println("Enter the age in months");
-                        double age = scanner.nextDouble() / 12;
-                        vitalSigns.setAge(age);
-                    }
-
-                    // Adding Vital sign to patients history
-                    patient.addVitalSign(vitalSigns);
-                    System.out.println("-----------Vital signs has been added sucessfully----------");
+                    addVitalSign(scanner, patientList);
                     displayInputMessages();
                     break;
                 case 3:
-                    
                     boolean result = checkPatientVitals(scanner, patientList);
                     if (result == true){
                         System.out.println("Valid Vital sign");
@@ -97,23 +74,31 @@ public class MainTestClass {
         }
 
     private static boolean checkPatientVitals(Scanner scanner, PatientList patientList) {
+        //Function checks the vital signs.
+        boolean result = false;
         System.out.println("----------Checking Vitals signs for patient----------");
         
         //Get patient name
         System.out.println("Enter patient name");
         String patientName = scanner.next();
-        Patient patient = patientList.getPatient(patientName);
-        
+        Patient patient = patientList.getPatient(patientName, true);
+        if (patient == null){
+            System.out.println("No patient with this name exists");
+            return false;
+        }
+    
         System.out.println("Hi " + patientName.toUpperCase() + " welcome to the checking portal");
-        
         System.out.println("Please enter the vital sign you want to check: ");
         System.out.println("\n\"RespiratoryRate\"");
         System.out.println("\"HeartRate\"");
         System.out.println("\"BloodPressure\"");
         System.out.println("\"Weight\"");
         VitalSigns latestSign = patient.getLatestVitalSign();
-
-        
+        if (latestSign == null){
+            System.out.println("No vital sign object present!!!!");
+            return false;
+        }
+                
         String selectedVitalString = scanner.next();
         
         if (selectedVitalString.equalsIgnoreCase("RespiratoryRate")){
@@ -128,10 +113,7 @@ public class MainTestClass {
         else if (selectedVitalString.equalsIgnoreCase("Weight")) {
              return latestSign.isThisVitalSignNormal("Weight");
         }
-        
         return false;
-        
-        
         
     }
 
@@ -143,5 +125,51 @@ public class MainTestClass {
         System.out.println("\t 3 - Check vital sign status");
         System.out.println("\t 4 - To Quit the application.");
         
+    }
+    
+    private static void addVitalSign(Scanner scanner, PatientList patientList) {
+        //Function to add vital sign
+        System.out.println("-----------Patient Details-----------");
+        System.out.println("Please enter patient name");
+        String patientName = scanner.next();
+        
+        
+        Patient patient = patientList.getPatient(patientName, false);
+        System.out.println("-----------Vital Sign Details-----------");
+        System.out.println("Please enter vital signs");
+
+        VitalSigns vitalSigns = new VitalSigns();
+        
+        System.out.println("If you want to enter age in months please enter M else enter Y");
+        String monthOrYear = scanner.next();
+
+        if (monthOrYear.equalsIgnoreCase("Y")) {
+            System.out.println("Enter the age");
+            vitalSigns.setAge(scanner.nextDouble());
+        } else {
+            System.out.println("Enter the age in months");
+            double age = scanner.nextDouble() / 12;
+            vitalSigns.setAge(age);
+        }
+        
+        System.out.println("Please enter current Respiratory rate");
+        vitalSigns.setResporatoryRate(scanner.nextInt());
+
+        System.out.println("Please enter current Heart rate");
+        vitalSigns.setHeartRate(scanner.nextInt());
+
+        System.out.println("Please enter current Systolic Blood Pressure");
+        vitalSigns.setBloodPressure(scanner.nextInt());
+
+        System.out.println("Please enter current weight in KG");
+        vitalSigns.setWeight(scanner.nextDouble());
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy.HH.mm.ss");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        vitalSigns.setTimestamp(timestamp.toString());
+        
+        // Adding Vital sign to patients history
+        patient.addVitalSign(vitalSigns);
+        System.out.println("-----------Vital signs has been added sucessfully----------");
     }
 }

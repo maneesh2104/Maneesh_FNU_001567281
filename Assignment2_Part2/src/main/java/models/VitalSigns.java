@@ -15,6 +15,15 @@ public class VitalSigns {
     int bloodPressure;
     double weight;
     double age;
+    String timestamp;
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
     
     public double getAge() {
         return age;
@@ -55,6 +64,8 @@ public class VitalSigns {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+    
+    
     
     public boolean isThisVitalSignNormal(String signType){
         
