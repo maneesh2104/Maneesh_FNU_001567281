@@ -11,7 +11,36 @@ package models;
  */
 public class Patient extends Person{
     
-    EncounterHistory patientEncounterHistory;
+    public EncounterHistory patientEncounterHistory;
+    House house;
+    Community community;
+    City city;
+
+    public Community getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    
+    
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
+    }
     
     public Patient(){
         patientEncounterHistory = new EncounterHistory();
@@ -73,13 +102,23 @@ public class Patient extends Person{
             System.out.println("Weight in kgs: " + encounter.getVitalSign()
                     .getWeight());
             
+            //Printing house, community and city
+            System.out.println("House number is " + 
+                    encounter.getPatient().getHouse().houseNumeber);
+            System.out.println("Community name is " +
+                    encounter.getPatient().getCommunity().getName());
+            System.out.println("City name is " +
+                    encounter.getPatient().getCity().getName());
+
         }
     }
     
     public VitalSigns getLatestVitalSign(){
         //Check if history object has any elements for IOB error
         if (!(patientEncounterHistory.encounterList.size() < 1)){
-            return patientEncounterHistory.encounterList.get(patientEncounterHistory.encounterList.size() - 1).getVitalSign();
+            return patientEncounterHistory.encounterList
+                    .get(patientEncounterHistory.encounterList.size() - 1)
+                    .getVitalSign();
         }
         else{
             return null;

@@ -201,7 +201,7 @@ public class VitalSigns {
         return false;
     }
 
-    private boolean isBloodPressureNormal() {
+    public boolean isBloodPressureNormal() {
         double age = this.age;
         System.out.println("Blood Pressure of the patient is " + bloodPressure);
        

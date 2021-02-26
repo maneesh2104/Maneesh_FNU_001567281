@@ -13,14 +13,14 @@ import java.util.ArrayList;
  */
 public class EncounterHistory {
     
-    ArrayList<Encounter> encounterList;
+    public ArrayList<Encounter> encounterList;
     
     public EncounterHistory(){
         encounterList = new ArrayList<>();
     }
     
     public void addEncounter(Encounter encounter){
-        this.encounterList.add(encounter);
+        this.encounterList.add(encounter); 
     }
     
 }

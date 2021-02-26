@@ -12,11 +12,11 @@ import java.util.ArrayList;
  * @author maneesh
  */
 public class City {
-    private ArrayList<House> houseList;
+    private ArrayList<Community> communityList;
     private String name;
     
     public City(){
-        houseList = new ArrayList();
+        communityList = new ArrayList();
     }
 
     public String getName() {
@@ -26,6 +26,27 @@ public class City {
     public void setName(String name) {
         this.name = name;
     }
+
+    public ArrayList<Community> getCommunityList() {
+        return communityList;
+    }
+
+    public void setCommunityList(ArrayList<Community> communityList) {
+        this.communityList = communityList;
+    }
     
+    public Community getCommunity(String name){
+        //Checking if community already exists
+        for(Community community:communityList){
+            if(community.getName().equalsIgnoreCase(name)){
+                return community;
+            }
+        }
+        //if no commnity exists
+        Community newCommunity = new Community();
+        newCommunity.setName(name);
+        communityList.add(newCommunity);
+        return newCommunity;
+    }
     
 }
