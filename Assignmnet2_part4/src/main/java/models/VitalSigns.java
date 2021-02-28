@@ -153,15 +153,15 @@ public class VitalSigns {
             if (heartRate >= 120 && heartRate <= 160){
                 return true;
             }
-            else if(age == 1){
+            else{
                 return false;
             }    
         }
         else if(age <= 1){
-            if (heartRate >= 80 && resporatoryRate <= 140){
+            if (heartRate >= 80 && heartRate <= 140){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }
         }
@@ -169,7 +169,7 @@ public class VitalSigns {
             if (heartRate >= 80 && heartRate <= 130){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }
         }
@@ -177,7 +177,7 @@ public class VitalSigns {
             if (heartRate >= 80 && heartRate <= 120){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }
         }
@@ -190,7 +190,7 @@ public class VitalSigns {
             }
         }
         else{
-            if (resporatoryRate >= 55 && resporatoryRate <= 105){
+            if (heartRate >= 55 && heartRate <= 105){
                 return true;
             }
             else if(age == 1){

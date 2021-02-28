@@ -46,9 +46,11 @@ public class TestClass {
                         displayInputMessages();
                         break;
                     }
-                    System.out.println("Please enter patient name for whom you want the view history of");
+                    System.out.println("Please enter patient name for whom"
+                            + " you want the view history of");
                     String patientNameGet = scanner.next();
-                    Patient patientGet = patientList.getPatient(patientNameGet, true);
+                    Patient patientGet = patientList.getPatient(patientNameGet,
+                            true);
                     if (patientGet == null){
                         System.out.println("Patient with that name does not exist");
                         displayInputMessages();
@@ -149,10 +151,21 @@ public class TestClass {
         System.out.println("-----------Patient Details-----------");
         System.out.println("Please enter patient name");
         String patientName = scanner.next();
+        if (patientName.matches("[0-9]+") && patientName.length() > 2) {
+            System.out.println("Patient name contains only digits! please enter the name");
+            System.out.println("Please enter patient name");
+            patientName = scanner.next();
+        }
         
         //user input city name
         System.out.println("Enter the city name");
         String city = scanner.next();
+        
+         if (city.matches("[0-9]+") && city.length() > 2) {
+            System.out.println("Patinet name contains only digits! please enter the name");
+            System.out.println("Enter the city name");
+            city = scanner.next();
+        }
         
         //Getting city object
         City cityObj = cityList.getCity(city);
@@ -164,10 +177,17 @@ public class TestClass {
         //Getting community object
         Community community = cityObj.getCommunity(comunityName);
         
-        //user input house number
-        System.out.println("Enter house number");
-        int houseNumber = scanner.nextInt();
         
+        int houseNumber;
+        try{
+            //user input house number
+            System.out.println("Enter house number");
+            houseNumber = scanner.nextInt();
+        }
+        catch(Exception e){
+            System.out.println("Error: Please enter only numbers");
+            houseNumber = scanner.nextInt();
+        }
         House houseObj = community.getHouse(houseNumber);
         Patient patient = patientList.getPatient(patientName, false);
         patient.setHouse(houseObj);
@@ -190,7 +210,7 @@ public class TestClass {
         
         System.out.println("If you want to enter age in months please enter M else enter Y");
         String monthOrYear = scanner.next();
-
+        
         if (monthOrYear.equalsIgnoreCase("Y")) {
             System.out.println("Enter the age");
             double age = scanner.nextDouble();
@@ -204,17 +224,54 @@ public class TestClass {
         }
         
         System.out.println("Please enter current Respiratory rate");
-        vitalSigns.setResporatoryRate(scanner.nextInt());
-
-        System.out.println("Please enter current Heart rate");
-        vitalSigns.setHeartRate(scanner.nextInt());
-
-        System.out.println("Please enter current Systolic Blood Pressure");
-        vitalSigns.setBloodPressure(scanner.nextInt());
-
-        System.out.println("Please enter current weight in KG");
-        vitalSigns.setWeight(scanner.nextDouble());
         
+        
+        try{
+            int repRate = scanner.nextInt();
+            vitalSigns.setResporatoryRate(repRate);
+        }
+        catch(Exception e){
+            System.out.println("Please neter numeric values");
+             scanner.next();
+             System.out.println("Please enter current Respiratory rate");
+             int repRate = scanner.nextInt();
+             vitalSigns.setResporatoryRate(repRate);
+        }
+        
+        
+        try{
+            System.out.println("Please enter current Heart rate");
+            vitalSigns.setHeartRate(scanner.nextInt());
+        }
+        catch(Exception e){
+             System.out.println("Please neter numeric values");
+             scanner.next();
+             System.out.println("Please enter current Heart rate");
+             vitalSigns.setHeartRate(scanner.nextInt());
+        }
+        
+        try{
+            System.out.println("Please enter current Systolic Blood Pressure");
+            vitalSigns.setBloodPressure(scanner.nextInt());
+        }
+        catch(Exception e){
+            System.out.println("Please neter numeric values");
+            scanner.next();
+            System.out.println("Please enter current Systolic Blood Pressure");
+            vitalSigns.setBloodPressure(scanner.nextInt());
+        }
+        
+        try{
+            System.out.println("Please enter current weight in KG");
+            vitalSigns.setWeight(scanner.nextDouble());
+        }
+        catch(Exception e){
+            System.out.println("Please neter numeric values");
+            scanner.next();
+            System.out.println("Please enter current weight in KG");
+            vitalSigns.setWeight(scanner.nextDouble());
+        }
+           
         SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy.HH.mm.ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         encounter.setTimestamp(timestamp.toString());
