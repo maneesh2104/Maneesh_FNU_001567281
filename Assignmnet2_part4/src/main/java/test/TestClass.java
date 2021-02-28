@@ -161,8 +161,8 @@ public class TestClass {
         System.out.println("Enter the city name");
         String city = scanner.next();
         
-         if (city.matches("[0-9]+") && city.length() > 2) {
-            System.out.println("Patinet name contains only digits! please enter the name");
+        if (city.matches("[0-9]+") && city.length() > 2) {
+            System.out.println("City name contains only digits! please enter the name");
             System.out.println("Enter the city name");
             city = scanner.next();
         }
@@ -173,6 +173,11 @@ public class TestClass {
         //user input community name
         System.out.println("Enter the community name");
         String comunityName = scanner.next();
+        if (comunityName.matches("[0-9]+") && comunityName.length() > 2) {
+            System.out.println("Community name contains only digits! please enter the name");
+            System.out.println("Enter the community name");
+            comunityName = scanner.next();
+        }
         
         //Getting community object
         Community community = cityObj.getCommunity(comunityName);
