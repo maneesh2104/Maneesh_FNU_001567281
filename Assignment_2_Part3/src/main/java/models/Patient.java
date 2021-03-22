@@ -50,6 +50,7 @@ public class Patient extends Person{
         
         //Getting the vital history object and iterating through it
         int i = 0;
+        
         for (Encounter encounter : patientEncounterHistory.encounterList) {
             System.out.println("\nRecord number: "+ ++i);
             System.out.println("Vital collect on Timestamp: " +

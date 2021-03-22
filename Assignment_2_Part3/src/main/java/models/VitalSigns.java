@@ -153,7 +153,7 @@ public class VitalSigns {
             if (heartRate >= 120 && heartRate <= 160){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }    
         }
@@ -161,7 +161,7 @@ public class VitalSigns {
             if (heartRate >= 80 && resporatoryRate <= 140){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }
         }
@@ -169,7 +169,7 @@ public class VitalSigns {
             if (heartRate >= 80 && heartRate <= 130){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }
         }
@@ -177,7 +177,7 @@ public class VitalSigns {
             if (heartRate >= 80 && heartRate <= 120){
                 return true;
             }
-            else if(age == 1){
+            else{
                 return false;
             }
         }
@@ -193,12 +193,12 @@ public class VitalSigns {
             if (resporatoryRate >= 55 && resporatoryRate <= 105){
                 return true;
             }
-            else if(age == 1){
+            else {
                 return false;
             }
         }
         
-        return false;
+        //return false;
     }
 
     private boolean isBloodPressureNormal() {

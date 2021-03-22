@@ -12,19 +12,19 @@ import java.util.ArrayList;
  * @author maneesh
  */
 public class Community {
-    private ArrayList<City> cityList;
+    private ArrayList<House> houseList;
     private String name;
     
     public Community(){
-        cityList = new ArrayList<City>();
+        houseList = new ArrayList<House>();
     }
 
-    public ArrayList<City> getCityList() {
-        return cityList;
+    public ArrayList<House> getHouseList() {
+        return houseList;
     }
 
-    public void setCityList(ArrayList<City> cityList) {
-        this.cityList = cityList;
+    public void setCityList(ArrayList<House> cityList) {
+        this.houseList = cityList;
     }
 
     public String getName() {
@@ -35,5 +35,18 @@ public class Community {
         this.name = name;
     }
     
-    
+    public House getHouse(int number){
+        for(House house: houseList){
+            if(house.getHouseNumeber() == number){
+                return house;
+            }
+        }
+        
+        House newHouse = new House();
+        newHouse.setHouseNumeber(number);
+        houseList.add(newHouse);
+        
+        return newHouse;
+    }
+        
 }

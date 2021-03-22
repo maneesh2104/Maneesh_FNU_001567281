@@ -12,18 +12,18 @@ import java.util.ArrayList;
  * @author maneesh
  */
 public class House {
-    ArrayList<Person> personList;
+    ArrayList<Patient> personList;
     int houseNumeber;
     
     public House(){
         personList = new ArrayList<>();
     }
 
-    public ArrayList<Person> getPersonList() {
+    public ArrayList<Patient> getPersonList() {
         return personList;
     }
 
-    public void setPersonList(ArrayList<Person> personList) {
+    public void setPersonList(ArrayList<Patient> personList) {
         this.personList = personList;
     }
 
