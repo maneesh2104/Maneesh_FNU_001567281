@@ -9,6 +9,8 @@ import Business.EcoSystem;
 
 import Business.Organization;
 import SysAdminManagePanels.ManageCustomersPanel;
+import SysAdminManagePanels.ManageDileveryManPanel;
+import SysAdminManagePanels.ManageResturantsPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -159,11 +161,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageNetworkActionPerformed
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
-        
+        ManageResturantsPanel manageRestaurantsPanel = new ManageResturantsPanel(ecosystem, userProcessContainer);
+        userProcessContainer.add("ManageRestaurants", manageRestaurantsPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
-       
+       ManageDileveryManPanel manageDeliveryMan = new ManageDileveryManPanel(ecosystem, userProcessContainer);
+       userProcessContainer.add("ManageRestaurants", manageDeliveryMan);
+       CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+       layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageAdminActionPerformed
 
     private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged

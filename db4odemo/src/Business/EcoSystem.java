@@ -38,6 +38,20 @@ public class EcoSystem extends Organization{
         return customerDirectory;
     }
     
+    public RestaurantDirectory getRestaurantDirectory(){
+        if(restaurantDirectory == null){
+            restaurantDirectory = new RestaurantDirectory();
+        }
+        return restaurantDirectory;
+    }
+    
+    public DeliveryManDirectory getDileveryManDirectory(){
+        if(deliveryManDirectory == null){
+            deliveryManDirectory = new DeliveryManDirectory();
+        }
+        return deliveryManDirectory;
+    }
+    
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();

@@ -7,6 +7,7 @@ package SysAdminManagePanels;
 
 import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Restaurant.Restaurant;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
@@ -20,15 +21,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author maneesh
  */
-public class ManageCustomersPanel extends javax.swing.JPanel {
+public class ManageResturantsPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageCustomersPanel
+     * Creates new form ManageResturantsPanel
      */
-    private EcoSystem ecoSystem;
+    EcoSystem ecoSystem;
     private JPanel userProcessContainer;
     private UserAccount userObj;
-    public ManageCustomersPanel(EcoSystem eco, JPanel userProcessContainer) {
+    public ManageResturantsPanel(EcoSystem eco, JPanel userProcessContainer) {
         initComponents();
         this.ecoSystem = eco;
         this.userProcessContainer = userProcessContainer;
@@ -36,19 +37,17 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
     }
     
     public void fillTable(){
-        ArrayList<Customer> directory = ecoSystem.getCoustoumerDirectory().custDirectory;
+        ArrayList<Restaurant> directory = ecoSystem.getRestaurantDirectory().getResDirectory();
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         tableModel.setRowCount(0);
         
-        for(Customer cust: directory){
+        for(Restaurant res: directory){
              Object [] row = new Object[3];
-             row[0] = cust.getName();
-             row[1] = cust.getUserName();
-             row[2] = cust.getPassword();
+             row[0] = res.getName();
+             row[1] = res.getUserName();
+             row[2] = res.getPassword();
              tableModel.addRow(row);
         }
-       
-        
     }
 
     /**
@@ -60,10 +59,6 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
@@ -71,19 +66,14 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Customers");
-
-        jLabel2.setText("User Name");
-
-        jLabel3.setText("Password");
-
-        jLabel4.setText("Name");
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,14 +106,17 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel6.setText("Customers List");
+        jLabel6.setText("Restaurants  List");
 
-        jButton1.setText("Create Customer");
+        jButton1.setText("Create Resturant Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Manage Restaurants");
 
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +125,8 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("User Name");
+
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,12 +134,16 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Password");
+
         jButton4.setText("Update Confirm");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jLabel4.setText("Name");
 
         jButton5.setText("Back");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -189,19 +188,19 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
                                                 .addComponent(jLabel4)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addGap(50, 50, 50)
-                                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGap(0, 586, Short.MAX_VALUE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel3))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtPassword)
+                                                    .addComponent(txtUserName))))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtName, txtPassword, txtUserName});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtName, txtPassword});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,11 +209,14 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton5))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -234,17 +236,21 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton2)
                         .addComponent(jButton4)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -252,9 +258,9 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         if(userAccount.checkIfUsernameIsUnique(txtUserName.getText())){
             ecoSystem.getUserAccountDirectory().createUserAccount(txtUserName.getText(),
-                    txtPassword.getText(), null, new CustomerRole());
-            ecoSystem.getCoustoumerDirectory().createNewCustomer(txtName.getText(),
-                    txtUserName.getText(), txtPassword.getText());
+                txtPassword.getText(), null, new CustomerRole());
+            ecoSystem.getRestaurantDirectory().createNewRestaurant(txtName.getText(),
+                txtUserName.getText(), txtPassword.getText());
             txtName.setText("");
             txtPassword.setText("");
             txtUserName.setText("");
@@ -265,28 +271,24 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //Get selected row
         int selectedRow = jTable1.getSelectedRow();
-         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
+        UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         if(selectedRow >= 0){
             String username= (String) jTable1.getValueAt(selectedRow, 1);
-            Customer custo = ecoSystem.getCoustoumerDirectory().getCustomer(username);
-            txtName.setText(custo.getName());
-            txtPassword.setText(custo.getPassword());
-            txtUserName.setText(custo.getUserName());
+            Restaurant res = ecoSystem.getRestaurantDirectory().getRestaurant(username);
+            txtName.setText(res.getName());
+            txtPassword.setText(res.getPassword());
+            txtUserName.setText(res.getUserName());
             userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
-                    custo.getPassword());
-      
+                res.getPassword());
+
         }
         else{
             JOptionPane.showMessageDialog(this,
-                    "Please select one row and then press update");
+                "Please select one row and then press update");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -294,14 +296,14 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow >= 0){
-           String username= (String) jTable1.getValueAt(selectedRow, 1);
-           ecoSystem.getCoustoumerDirectory().deleteCustomer(username);
-           ecoSystem.getUserAccountDirectory().deleteUserAccount(userObj);
-           fillTable();
+            String username= (String) jTable1.getValueAt(selectedRow, 1);
+            ecoSystem.getRestaurantDirectory().deleteRestaurant(username);
+            ecoSystem.getUserAccountDirectory().deleteUserAccount(userObj);
+            fillTable();
         }
         else{
             JOptionPane.showMessageDialog(this,
-                    "Please select one row and then press Delete");
+                "Please select one row and then press Delete");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -309,7 +311,7 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         ecoSystem.getUserAccountDirectory().updateUserAccount(userObj, txtName.getText(), txtUserName.getText(), txtPassword.getText());
-        ecoSystem.getCoustoumerDirectory().updateCustomer(txtName.getText(), txtUserName.getText(), txtPassword.getText());
+        ecoSystem.getRestaurantDirectory().updateRestaurant(txtName.getText(), txtUserName.getText(), txtPassword.getText());
         txtName.setText("");
         txtPassword.setText("");
         txtUserName.setText("");
