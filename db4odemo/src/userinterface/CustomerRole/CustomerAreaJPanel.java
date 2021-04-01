@@ -4,7 +4,9 @@
  */
 package userinterface.CustomerRole;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Restaurant.Order;
 import Business.Restaurant.Restaurant;
 
 import Business.UserAccount.UserAccount;
@@ -69,7 +71,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblOrders = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -122,7 +124,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         valueLabel.setText("Maneesh");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -130,10 +132,18 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Restaurant", "Price", "Status"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblOrders);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Restaurant List");
@@ -209,7 +219,18 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
     private void btnrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrefreshActionPerformed
-
+        Customer cust = ecoSystem.getCoustoumerDirectory().getCustomer(userAccount.getUsername());
+        ArrayList<Restaurant> directory = ecoSystem.getRestaurantDirectory().getResDirectory();
+        DefaultTableModel tableModel = (DefaultTableModel) tblOrders.getModel();
+        tableModel.setRowCount(0);
+        for(Order ord:cust.getOrders()){
+            Object [] row = new Object[4];
+            row[0] = ord;
+            row[1] = ord.getRestuarantUserName();
+            row[2] = ord.getTotalPrice();
+            row[3] = ord.getStatus();
+            tableModel.addRow(row);
+        }
         //populateRequestTable();
         
     }//GEN-LAST:event_btnrefreshActionPerformed
@@ -222,7 +243,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblOrders;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables

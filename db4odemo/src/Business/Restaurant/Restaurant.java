@@ -19,6 +19,8 @@ public class Restaurant {
     String phoneNumber;
     String address;
     ArrayList<Dish> menu;
+    ArrayList<Order> orders;
+    int id=1;
     
     public Restaurant(String name, String userName, String password, String phoneNumber, String address){
         this.name = name;
@@ -27,6 +29,7 @@ public class Restaurant {
         this.phoneNumber = phoneNumber;
         this.address = address;
         menu = new ArrayList<Dish>();
+        orders = new ArrayList<Order>();
     }
 
     public String getPhoneNumber() {
@@ -74,6 +77,14 @@ public class Restaurant {
             menu = new ArrayList<Dish>();
         }
         return menu;
+    }
+    
+    public void newOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<Dish> order, String price, String deliveryAddress){
+        Order newOrder = new Order(restaurantName, customerName, deliveryMan, price, "New", String.valueOf(id++), order);
+        if(orders==null){
+            orders = new ArrayList<Order>();
+        }
+        orders.add(newOrder);
     }
     
     @Override

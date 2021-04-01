@@ -5,10 +5,13 @@
  */
 package userinterface.CustomerRole;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.Restaurant.Dish;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -147,6 +150,11 @@ public class PlaceOrderPanel extends javax.swing.JPanel {
         });
 
         btnPlaceOrder.setText("Place Order");
+        btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaceOrderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -231,6 +239,9 @@ public class PlaceOrderPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+                userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAddCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCartActionPerformed
@@ -261,6 +272,14 @@ public class PlaceOrderPanel extends javax.swing.JPanel {
              fillCartTable();
         }
     }//GEN-LAST:event_btnRemoveItemActionPerformed
+
+    private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
+        // TODO add your handling code here:
+        Customer cust = ecosystem.getCoustoumerDirectory().getCustomer(userAccount.getUsername());
+        restaurant.newOrder(restaurant.getUserName(), userAccount.getUsername(), null, cart, String.valueOf(totalPrice), cust.getAddress());
+        cust.newOrder(restaurant.getUserName(), userAccount.getUsername(), null, cart, String.valueOf(totalPrice), cust.getAddress());       
+        JOptionPane.showMessageDialog(this, "Congratulations your order has been placed");
+    }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
