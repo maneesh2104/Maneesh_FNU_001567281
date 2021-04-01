@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +29,7 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
     private EcoSystem ecoSystem;
     private JPanel userProcessContainer;
     private UserAccount userObj;
+    private Customer custObj;
     public ManageCustomersPanel(EcoSystem eco, JPanel userProcessContainer) {
         initComponents();
         this.ecoSystem = eco;
@@ -41,10 +43,12 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         tableModel.setRowCount(0);
         
         for(Customer cust: directory){
-             Object [] row = new Object[3];
+             Object [] row = new Object[5];
              row[0] = cust.getName();
              row[1] = cust.getUserName();
              row[2] = cust.getPassword();
+             row[3] = cust.getPhoneNumber();
+             row[4] = cust.getAddress();
              tableModel.addRow(row);
         }
        
@@ -75,6 +79,10 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        txtPhoneNumber = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Customers");
@@ -105,15 +113,23 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "User Name", "Password"
+                "Name", "User Name", "Password", "Mobile", "Address"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel6.setText("Customers List");
@@ -153,6 +169,22 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
             }
         });
 
+        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Phone number");
+
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Address");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,24 +216,35 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(197, 197, 197)
                                             .addComponent(jLabel6))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addGap(50, 50, 50)
-                                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                .addComponent(jLabel7)
+                                                .addGap(61, 61, 61)
+                                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel5)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel4)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel3)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel2)
+                                                    .addGap(50, 50, 50)
+                                                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                         .addGap(0, 586, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtName, txtPassword, txtUserName});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAddress, txtPhoneNumber});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +265,15 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
@@ -233,8 +284,7 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
                     .addComponent(jButton3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton2)
-                        .addComponent(jButton4)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                        .addComponent(jButton4))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,15 +299,46 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //Add new customer to the list
+        //Validations
+        if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Adress cannot be empty");
+            return;
+        }
+        else if(txtPhoneNumber.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Phone number cannot be empty");
+            return;
+        }
+        String regEx = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+        if (Pattern.compile(regEx).matcher(txtPhoneNumber.getText()).matches()) {
+            System.out.println("yes");
+        } else {
+            JOptionPane.showMessageDialog(this, "Phone not in a proper format");
+            return;
+        }
+        if(txtUserName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User Name cannot be empty");
+            return;
+        }
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+        if(txtName.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        } 
+        
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         if(userAccount.checkIfUsernameIsUnique(txtUserName.getText())){
             ecoSystem.getUserAccountDirectory().createUserAccount(txtUserName.getText(),
                     txtPassword.getText(), null, new CustomerRole());
             ecoSystem.getCoustoumerDirectory().createNewCustomer(txtName.getText(),
-                    txtUserName.getText(), txtPassword.getText());
+                    txtUserName.getText(), txtPassword.getText(), txtPhoneNumber.getText(), txtAddress.getText());
             txtName.setText("");
             txtPassword.setText("");
             txtUserName.setText("");
+            txtAddress.setText("");
+            txtPhoneNumber.setText("");
             fillTable();
         }
         else{
@@ -280,9 +361,11 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
             txtName.setText(custo.getName());
             txtPassword.setText(custo.getPassword());
             txtUserName.setText(custo.getUserName());
+            txtPhoneNumber.setText(custo.getPhoneNumber());
+            txtAddress.setText(custo.getAddress());
             userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
                     custo.getPassword());
-      
+            custObj = ecoSystem.getCoustoumerDirectory().getCustomer(username);
         }
         else{
             JOptionPane.showMessageDialog(this,
@@ -295,7 +378,10 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow >= 0){
            String username= (String) jTable1.getValueAt(selectedRow, 1);
+           String password= (String) jTable1.getValueAt(selectedRow, 2);
            ecoSystem.getCoustoumerDirectory().deleteCustomer(username);
+           userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
+                    password);
            ecoSystem.getUserAccountDirectory().deleteUserAccount(userObj);
            fillTable();
         }
@@ -307,12 +393,47 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        //Validations before update
+       if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Adress cannot be empty");
+            return;
+        }
+        else if(txtPhoneNumber.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Phone number cannot be empty");
+            return;
+        }
+        String regEx = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+        if (Pattern.compile(regEx).matcher(txtPhoneNumber.getText()).matches()) {
+            System.out.println("yes");
+        } else {
+            JOptionPane.showMessageDialog(this, "Phone not in a proper format");
+            return;
+        }
+        if(txtUserName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User Name cannot be empty");
+            return;
+        }
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+        if(txtName.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        }
+        //In case the
+        //userObj=ecoSystem.getUserAccountDirectory().authenticateUser( txtUserName.getText(),
+        //            txtPassword.getText());
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         ecoSystem.getUserAccountDirectory().updateUserAccount(userObj, txtName.getText(), txtUserName.getText(), txtPassword.getText());
-        ecoSystem.getCoustoumerDirectory().updateCustomer(txtName.getText(), txtUserName.getText(), txtPassword.getText());
+        ecoSystem.getCoustoumerDirectory().updateCustomer(custObj,txtName.getText(),
+                txtUserName.getText(), txtPassword.getText(),
+                txtPhoneNumber.getText(), txtAddress.getText());
         txtName.setText("");
         txtPassword.setText("");
         txtUserName.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
         fillTable();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -322,6 +443,14 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneNumberActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -334,11 +463,15 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

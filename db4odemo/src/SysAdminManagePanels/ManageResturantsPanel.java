@@ -8,11 +8,13 @@ package SysAdminManagePanels;
 import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.Restaurant.Restaurant;
+import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +31,7 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
     EcoSystem ecoSystem;
     private JPanel userProcessContainer;
     private UserAccount userObj;
+    private Restaurant resObj;
     public ManageResturantsPanel(EcoSystem eco, JPanel userProcessContainer) {
         initComponents();
         this.ecoSystem = eco;
@@ -42,10 +45,12 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
         tableModel.setRowCount(0);
         
         for(Restaurant res: directory){
-             Object [] row = new Object[3];
+             Object [] row = new Object[5];
              row[0] = res.getName();
              row[1] = res.getUserName();
              row[2] = res.getPassword();
+             row[3] = res.getPhoneNumber();
+             row[4] = res.getAddress();
              tableModel.addRow(row);
         }
     }
@@ -74,6 +79,10 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        txtPhoneNumber = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,13 +104,13 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "User Name", "Password"
+                "Name", "User Name", "Password", "Phone", "Address"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -152,6 +161,22 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
             }
         });
 
+        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Phone number");
+
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Address");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,11 +217,19 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel2)
                                                     .addComponent(jLabel3))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(18, 18, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(txtPassword)
-                                                    .addComponent(txtUserName))))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                    .addComponent(txtUserName)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 175, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -220,11 +253,19 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
@@ -236,7 +277,7 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton2)
                         .addComponent(jButton4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,15 +296,52 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //Add new customer to the list
+        
+        if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Adress cannot be empty");
+            return;
+        }
+        else if(txtPhoneNumber.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Phone number cannot be empty");
+            return;
+        }
+        String regEx = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+        if (Pattern.compile(regEx).matcher(txtPhoneNumber.getText()).matches()) {
+            System.out.println("yes");
+        } else {
+            JOptionPane.showMessageDialog(this, "Phone not in a proper format");
+            return;
+        }
+        if(txtUserName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User Name cannot be empty");
+            return;
+        }
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+        if(txtName.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        }
+        
+        
+        
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         if(userAccount.checkIfUsernameIsUnique(txtUserName.getText())){
             ecoSystem.getUserAccountDirectory().createUserAccount(txtUserName.getText(),
-                txtPassword.getText(), null, new CustomerRole());
+                txtPassword.getText(), null, new AdminRole());
+            //Add validations
+            
             ecoSystem.getRestaurantDirectory().createNewRestaurant(txtName.getText(),
-                txtUserName.getText(), txtPassword.getText());
+                txtUserName.getText(), txtPassword.getText(),
+                txtPhoneNumber.getText(),
+                txtAddress.getText());
             txtName.setText("");
             txtPassword.setText("");
             txtUserName.setText("");
+            txtAddress.setText("");
+            txtPhoneNumber.setText("");
             fillTable();
         }
         else{
@@ -282,8 +360,12 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
             txtName.setText(res.getName());
             txtPassword.setText(res.getPassword());
             txtUserName.setText(res.getUserName());
+            txtAddress.setText(res.getAddress());
+            txtPhoneNumber.setText(res.getPhoneNumber());
+            
             userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
                 res.getPassword());
+            resObj = ecoSystem.getRestaurantDirectory().getRestaurant(username);
 
         }
         else{
@@ -297,7 +379,10 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow >= 0){
             String username= (String) jTable1.getValueAt(selectedRow, 1);
+            String password = (String) jTable1.getValueAt(selectedRow, 2);
             ecoSystem.getRestaurantDirectory().deleteRestaurant(username);
+            userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
+                password);
             ecoSystem.getUserAccountDirectory().deleteUserAccount(userObj);
             fillTable();
         }
@@ -309,12 +394,46 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        
+        if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Adress cannot be empty");
+            return;
+        }
+        else if(txtPhoneNumber.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Phone number cannot be empty");
+            return;
+        }
+        String regEx = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+        if (Pattern.compile(regEx).matcher(txtPhoneNumber.getText()).matches()) {
+            System.out.println("yes");
+        } else {
+            JOptionPane.showMessageDialog(this, "Phone not in a proper format");
+            return;
+        }
+        if(txtUserName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User Name cannot be empty");
+            return;
+        }
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+        if(txtName.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        }
+        
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         ecoSystem.getUserAccountDirectory().updateUserAccount(userObj, txtName.getText(), txtUserName.getText(), txtPassword.getText());
-        ecoSystem.getRestaurantDirectory().updateRestaurant(txtName.getText(), txtUserName.getText(), txtPassword.getText());
+        ecoSystem.getRestaurantDirectory().updateRestaurant(resObj,
+                txtName.getText(), txtUserName.getText(),
+                txtPassword.getText(), txtPhoneNumber.getText(),
+                txtAddress.getText());
         txtName.setText("");
         txtPassword.setText("");
         txtUserName.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
         fillTable();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -324,6 +443,14 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneNumberActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -336,11 +463,15 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

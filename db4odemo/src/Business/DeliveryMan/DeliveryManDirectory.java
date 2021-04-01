@@ -23,8 +23,9 @@ public class DeliveryManDirectory {
         return deliveryDirectory;
     }
     
-    public DeliveryMan createNewDeliveryMan(String name, String userName, String password){
-        DeliveryMan res = new DeliveryMan(name, userName, password);
+    public DeliveryMan createNewDeliveryMan(String name, String userName, String password, String phoneNumber, String address){
+        DeliveryMan res = new DeliveryMan(name, userName, password, phoneNumber,
+                address);
         deliveryDirectory.add(res);
         return res;
     }
@@ -39,14 +40,13 @@ public class DeliveryManDirectory {
         deliveryDirectory.removeAll(custs);
     }
     
-    public void updateDeliveryMan(String name, String userName, String password){
-        for(DeliveryMan del: deliveryDirectory){
-            if(del.userName.equalsIgnoreCase(userName)){
+    public void updateDeliveryMan(DeliveryMan del,String name, String userName, String password, String phoneNumber, String address){
                 del.name = name;
                 del.userName = userName;
                 del.password = password;
-            }
-        }
+                del.phoneNumber = phoneNumber;
+                del.address = address;
+        
     }
     
     public DeliveryMan getDeliveryMan(String userName){

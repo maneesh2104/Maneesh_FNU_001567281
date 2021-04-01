@@ -19,8 +19,8 @@ public class CustomerDirectory {
         custDirectory = new ArrayList<Customer>();
     }
     
-    public Customer createNewCustomer(String name, String userName, String password){
-        Customer cust = new Customer(name, userName, password);
+    public Customer createNewCustomer(String name, String userName, String password, String phoneNumber, String address){
+        Customer cust = new Customer(name, userName, password, phoneNumber, address);
         custDirectory.add(cust);
         return cust;
     }
@@ -35,14 +35,12 @@ public class CustomerDirectory {
         custDirectory.removeAll(custs);
     }
     
-    public void updateCustomer(String name, String userName, String password){
-        for(Customer cust: custDirectory){
-            if(cust.userName.equalsIgnoreCase(userName)){
+    public void updateCustomer(Customer cust, String name, String userName, String password, String phoneNumber, String address){
                 cust.name = name;
                 cust.userName = userName;
                 cust.password = password;
-            }
-        }
+                cust.phoneNumber = phoneNumber;
+                cust.address = address; 
     }
     
     public Customer getCustomer(String userName){

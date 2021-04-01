@@ -23,8 +23,8 @@ public class RestaurantDirectory {
         return resDirectory;
     }
     
-    public Restaurant createNewRestaurant(String name, String userName, String password){
-        Restaurant res = new Restaurant(name, userName, password);
+    public Restaurant createNewRestaurant(String name, String userName, String password, String phoneNumber, String address){
+        Restaurant res = new Restaurant(name, userName, password, phoneNumber, address);
         resDirectory.add(res);
         return res;
     }
@@ -39,14 +39,12 @@ public class RestaurantDirectory {
         resDirectory.removeAll(custs);
     }
     
-    public void updateRestaurant(String name, String userName, String password){
-        for(Restaurant res: resDirectory){
-            if(res.userName.equalsIgnoreCase(userName)){
-                res.name = name;
-                res.userName = userName;
-                res.password = password;
-            }
-        }
+    public void updateRestaurant(Restaurant res,String name, String userName, String password, String phoneNumber, String address){
+        res.name = name;
+        res.userName = userName;
+        res.password = password;
+        res.phoneNumber = phoneNumber;
+        res.address = address;
     }
     
     public Restaurant getRestaurant(String userName){

@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
     private EcoSystem ecoSystem;
     private JPanel userProcessContainer;
     private UserAccount userObj;
+    private DeliveryMan delObj;
     public ManageDileveryManPanel(EcoSystem eco, JPanel userProcessContainer) {
         initComponents();
         this.ecoSystem = eco;
@@ -42,10 +44,12 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
         tableModel.setRowCount(0);
         
         for(DeliveryMan cust: directory){
-             Object [] row = new Object[3];
+             Object [] row = new Object[5];
              row[0] = cust.getName();
              row[1] = cust.getUserName();
              row[2] = cust.getPassword();
+             row[3] = cust.getPhoneNumber();
+             row[4] = cust.getAddress();
              tableModel.addRow(row);
         }
 
@@ -75,20 +79,29 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        txtPhoneNumber = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
             }
         });
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 52, 244, -1));
 
         jLabel3.setText("Password");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 101, -1, -1));
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 96, 244, -1));
 
         jButton4.setText("Update Confirm");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -96,8 +109,10 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 594, -1, -1));
 
         jLabel4.setText("Name");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 133, -1, -1));
 
         jButton5.setText("Back");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -105,27 +120,32 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 128, 244, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "User Name", "Password"
+                "Name", "User Name", "Password", "Phone", "Address"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 310, 494, 272));
+
         jLabel6.setText("Delivery men  List");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 287, -1, -1));
 
         jButton1.setText("Create Dilevery Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,9 +153,11 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 252, -1, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Dilevery Men");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 11, 640, -1));
 
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,8 +165,10 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 594, -1, -1));
 
         jLabel2.setText("User Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 57, -1, -1));
 
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -152,93 +176,27 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 594, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(218, 218, 218)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(62, 62, 62)
-                                    .addComponent(jButton2)
-                                    .addGap(78, 78, 78)
-                                    .addComponent(jButton4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(197, 197, 197)
-                                            .addComponent(jLabel6))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel3))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtPassword)
-                                                    .addComponent(txtUserName))))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneNumberActionPerformed(evt);
+            }
+        });
+        add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 165, 244, -1));
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtName, txtPassword});
+        jLabel5.setText("Phone number");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 170, -1, -1));
 
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton5))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
-                        .addComponent(jButton4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 208, 244, -1));
+
+        jLabel7.setText("Address");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 213, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -251,14 +209,45 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Adress cannot be empty");
+            return;
+        }
+        else if(txtPhoneNumber.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Phone number cannot be empty");
+            return;
+        }
+        String regEx = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+        if (Pattern.compile(regEx).matcher(txtPhoneNumber.getText()).matches()) {
+            System.out.println("yes");
+        } else {
+            JOptionPane.showMessageDialog(this, "Phone not in a proper format");
+            return;
+        }
+        if(txtUserName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User Name cannot be empty");
+            return;
+        }
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+        if(txtName.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        }
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
+        
         ecoSystem.getUserAccountDirectory().updateUserAccount(userObj,
                 txtName.getText(), txtUserName.getText(), txtPassword.getText());
-        ecoSystem.getDileveryManDirectory().updateDeliveryMan(txtName.getText(),
-                txtUserName.getText(), txtPassword.getText());
+        ecoSystem.getDileveryManDirectory().updateDeliveryMan(delObj,txtName.getText(),
+                txtUserName.getText(), txtPassword.getText(),
+                txtPhoneNumber.getText(), txtAddress.getText());
         txtName.setText("");
         txtPassword.setText("");
         txtUserName.setText("");
+                    txtAddress.setText("");
+            txtPhoneNumber.setText("");
         fillTable();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -276,15 +265,45 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //Add new customer to the list
+         if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Adress cannot be empty");
+            return;
+        }
+        else if(txtPhoneNumber.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Phone number cannot be empty");
+            return;
+        }
+        String regEx = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
+        if (Pattern.compile(regEx).matcher(txtPhoneNumber.getText()).matches()) {
+            System.out.println("yes");
+        } else {
+            JOptionPane.showMessageDialog(this, "Phone not in a proper format");
+            return;
+        }
+        if(txtUserName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User Name cannot be empty");
+            return;
+        }
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        }
+        if(txtName.getText().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        }
         UserAccountDirectory userAccount = ecoSystem.getUserAccountDirectory();
         if(userAccount.checkIfUsernameIsUnique(txtUserName.getText())){
             ecoSystem.getUserAccountDirectory().createUserAccount(txtUserName.getText(),
                 txtPassword.getText(), null, new DeliverManRole());
             ecoSystem.getDileveryManDirectory().createNewDeliveryMan(txtName.getText(),
-                txtUserName.getText(), txtPassword.getText());
+                txtUserName.getText(), txtPassword.getText(),
+                txtPhoneNumber.getText(), txtAddress.getText());
             txtName.setText("");
             txtPassword.setText("");
             txtUserName.setText("");
+            txtAddress.setText("");
+            txtPhoneNumber.setText("");
             fillTable();
         }
         else{
@@ -303,8 +322,11 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
             txtName.setText(res.getName());
             txtPassword.setText(res.getPassword());
             txtUserName.setText(res.getUserName());
+            txtPhoneNumber.setText(res.getPhoneNumber());
+            txtAddress.setText(res.getAddress());
             userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
                 res.getPassword());
+            delObj = ecoSystem.getDileveryManDirectory().getDeliveryMan(username);
         }
         else{
             JOptionPane.showMessageDialog(this,
@@ -317,6 +339,9 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow >= 0){
             String username= (String) jTable1.getValueAt(selectedRow, 1);
+            String password= (String) jTable1.getValueAt(selectedRow, 2);
+            userObj=ecoSystem.getUserAccountDirectory().authenticateUser(username,
+                    password);
             ecoSystem.getDileveryManDirectory().deleteDeliveryMan(username);
             ecoSystem.getUserAccountDirectory().deleteUserAccount(userObj);
             fillTable();
@@ -326,6 +351,14 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
                 "Please select one row and then press Delete");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneNumberActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -338,11 +371,15 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

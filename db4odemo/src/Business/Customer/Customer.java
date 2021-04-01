@@ -14,12 +14,33 @@ public class Customer {
     String name;
     String password;
     String userName;
+    String phoneNumber;
+    String address;
     
-    public Customer(String name, String userName, String password){
+    public Customer(String name, String userName, String password, String phoneNumber, String address){
         this.name = name;
         this.password = password;
         this.userName = userName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
 
     public String getName() {
         return name;
