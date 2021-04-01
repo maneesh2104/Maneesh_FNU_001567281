@@ -26,6 +26,7 @@ public class Restaurant {
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        menu = new ArrayList<Dish>();
     }
 
     public String getPhoneNumber() {
@@ -67,5 +68,16 @@ public class Restaurant {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public ArrayList<Dish> getMenu() {
+        if(menu == null){
+            menu = new ArrayList<Dish>();
+        }
+        return menu;
+    }
     
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -12,6 +12,7 @@ import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,7 +45,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         
         for(Restaurant res: directory){
              Object [] row = new Object[3];
-             row[0] = res.getName();
+             row[0] = res;
              row[1] = res.getPhoneNumber();
              row[2] = res.getAddress();
              tableModel.addRow(row);
@@ -192,7 +193,17 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
-        
+        int selectedRow = workRequestJTable.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+                Restaurant restaurant = (Restaurant)workRequestJTable.getValueAt(selectedRow, 0);
+                PlaceOrderPanel placeOrderPanel = new PlaceOrderPanel(userProcessContainer,userAccount,ecoSystem,restaurant);
+                userProcessContainer.add("MenuPanel",placeOrderPanel);
+                CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+        }
         
         
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
