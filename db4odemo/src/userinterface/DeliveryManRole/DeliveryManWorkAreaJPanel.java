@@ -139,10 +139,16 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
          if(selectedRow>=0){
              Order ord = (Order) jTable1.getValueAt(selectedRow, 0);
              ord.setStatus("Delivered");
+             Customer cust = business.getCoustoumerDirectory().getCustomer(ord.getCustomerUserName());
+            for(Order order:cust.getOrders()){
+                if(ord.getId().equalsIgnoreCase(order.getId())){
+                    order.setStatus("Delivered");
+                }
+            }
              fillOrderTable();
          }
          else{
-                         JOptionPane.showMessageDialog(null, "Please select a row first");
+              JOptionPane.showMessageDialog(null, "Please select a row first");
 
          }
 //        int selectedRow = workRequestJTable.getSelectedRow();
@@ -171,11 +177,17 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = jTable1.getSelectedRow();
          if(selectedRow>=0){
              Order ord = (Order) jTable1.getValueAt(selectedRow, 0);
+             Customer cust = business.getCoustoumerDirectory().getCustomer(ord.getCustomerUserName());
+        for(Order order:cust.getOrders()){
+            if(ord.getId().equalsIgnoreCase(order.getId())){
+                order.setStatus("Not Delivered");
+            }
+        }
              ord.setStatus("Not Delivered");
              fillOrderTable();
          }
          else{
-                           JOptionPane.showMessageDialog(null, "Please select a row first");
+              JOptionPane.showMessageDialog(null, "Please select a row first");
 
          }
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -191,11 +191,19 @@ public class ManageOrdersPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
          int selectedRow = jTable1.getSelectedRow();
         if(selectedRow>=0){
+            
             Order order = (Order) jTable1.getValueAt(selectedRow, 0);
-            AssignDeliveryManPanel assignDeliveryPanel = new AssignDeliveryManPanel(order, userProcessContainer, ecosystem);
-            userProcessContainer.add("Assign Delivery", assignDeliveryPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+            if(order.getStatus().equalsIgnoreCase("order ready")){
+                AssignDeliveryManPanel assignDeliveryPanel = new AssignDeliveryManPanel(order, userProcessContainer, ecosystem);
+                userProcessContainer.add("Assign Delivery", assignDeliveryPanel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,
+                "Order not ready yet");
+            }
+            
         }
         else{
              JOptionPane.showMessageDialog(this,

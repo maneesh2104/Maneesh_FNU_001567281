@@ -5,6 +5,7 @@
  */
 package userinterface.RestaurantAdminRole;
 
+import Business.Customer.Customer;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Restaurant.Dish;
@@ -142,6 +143,12 @@ public class AssignDeliveryManPanel extends javax.swing.JPanel {
             DeliveryMan deliveryMan  = (DeliveryMan)tblDeliveryMen.getValueAt(selectedRow, 0);
             deliveryMan.getorders().add(order);
             order.setStatus("Out for Delivery");
+            Customer cust = system.getCoustoumerDirectory().getCustomer(order.getCustomerUserName());
+            for(Order ord:cust.getOrders()){
+                if(ord.getId().equalsIgnoreCase(order.getId())){
+                    ord.setStatus("Out for Delivery");
+                }
+            }
             JOptionPane.showMessageDialog(null, "Assigned to Delivery Man");
         }
         else{
