@@ -140,6 +140,11 @@ public class PlaceOrderPanel extends javax.swing.JPanel {
         });
 
         btnRemoveItem.setText("Remove Item");
+        btnRemoveItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveItemActionPerformed(evt);
+            }
+        });
 
         btnPlaceOrder.setText("Place Order");
 
@@ -244,6 +249,18 @@ public class PlaceOrderPanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_btnAddCartActionPerformed
+
+    private void btnRemoveItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItemActionPerformed
+        // TODO add your handling code here:
+        int selected = tblCart.getSelectedRow();
+        if(selected>=0){
+             Dish selectedDish = (Dish) tblCart.getValueAt(selected, 0);
+             cart.remove(selectedDish);
+             totalPrice -= Double.parseDouble(selectedDish.getPrice());
+             txtPrice.setText(String.valueOf(totalPrice));
+             fillCartTable();
+        }
+    }//GEN-LAST:event_btnRemoveItemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
