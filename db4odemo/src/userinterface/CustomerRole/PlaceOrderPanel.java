@@ -12,7 +12,9 @@ import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -276,8 +278,9 @@ public class PlaceOrderPanel extends javax.swing.JPanel {
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         // TODO add your handling code here:
         Customer cust = ecosystem.getCoustoumerDirectory().getCustomer(userAccount.getUsername());
-        restaurant.newOrder(restaurant.getUserName(), userAccount.getUsername(), null, cart, String.valueOf(totalPrice), cust.getAddress());
-        cust.newOrder(restaurant.getUserName(), userAccount.getUsername(), null, cart, String.valueOf(totalPrice), cust.getAddress());       
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        restaurant.newOrder(timeStamp, restaurant.getUserName(), userAccount.getUsername(), null, cart, String.valueOf(totalPrice), cust.getAddress());
+        cust.newOrder(timeStamp, restaurant.getUserName(), userAccount.getUsername(), null, cart, String.valueOf(totalPrice), cust.getAddress());       
         JOptionPane.showMessageDialog(this, "Congratulations your order has been placed");
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 

@@ -79,13 +79,21 @@ public class Restaurant {
         return menu;
     }
     
-    public void newOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<Dish> order, String price, String deliveryAddress){
-        Order newOrder = new Order(restaurantName, customerName, deliveryMan, price, "New", String.valueOf(id++), order);
+    public void newOrder(String orderId, String restaurantName, String customerName, String deliveryMan, ArrayList<Dish> order, String price, String deliveryAddress){
+        Order newOrder = new Order(restaurantName, customerName, deliveryMan, price, "New", orderId, order);
         if(orders==null){
             orders = new ArrayList<Order>();
         }
         orders.add(newOrder);
     }
+
+    public ArrayList<Order> getOrders() {
+        if(orders==null){
+            orders = new ArrayList<Order>();
+        }
+        return orders;
+    }
+    
     
     @Override
     public String toString() {

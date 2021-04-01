@@ -4,12 +4,16 @@
  */
 package userinterface;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
+import Business.DeliveryMan.DeliveryMan;
 
 import Business.Organization;
+import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -28,6 +32,18 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+//        ArrayList<Restaurant> rests = system.getRestaurantDirectory().getResDirectory();
+//        for(Restaurant rest: rests){
+//            rest.getOrders().clear();
+//        }
+//        ArrayList<Customer> custs = system.getCoustoumerDirectory().custDirectory;
+//        for(Customer cust: custs){
+//            cust.getOrders().clear();
+//        }
+//        ArrayList<DeliveryMan> dels = system.getDileveryManDirectory().getDeliveryDirectory();
+//        for(DeliveryMan del: dels){
+//            del.getorders().clear();
+//        }
         this.setSize(1680, 1050);
     }
 

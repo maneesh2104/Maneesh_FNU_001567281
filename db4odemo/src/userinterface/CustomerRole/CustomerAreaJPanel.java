@@ -38,6 +38,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         valueLabel.setText(account.getName());
         populateRestaturanttTable();
+        populateOrderTable();
     }
     
     public void populateRestaturanttTable(){
@@ -219,18 +220,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
     private void btnrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrefreshActionPerformed
-        Customer cust = ecoSystem.getCoustoumerDirectory().getCustomer(userAccount.getUsername());
-        ArrayList<Restaurant> directory = ecoSystem.getRestaurantDirectory().getResDirectory();
-        DefaultTableModel tableModel = (DefaultTableModel) tblOrders.getModel();
-        tableModel.setRowCount(0);
-        for(Order ord:cust.getOrders()){
-            Object [] row = new Object[4];
-            row[0] = ord;
-            row[1] = ord.getRestuarantUserName();
-            row[2] = ord.getTotalPrice();
-            row[3] = ord.getStatus();
-            tableModel.addRow(row);
-        }
+        populateOrderTable();
         //populateRequestTable();
         
     }//GEN-LAST:event_btnrefreshActionPerformed
@@ -247,4 +237,20 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
+
+    private void populateOrderTable() {
+        Customer cust = ecoSystem.getCoustoumerDirectory().getCustomer(userAccount.getUsername());
+        ArrayList<Restaurant> directory = ecoSystem.getRestaurantDirectory().getResDirectory();
+        DefaultTableModel tableModel = (DefaultTableModel) tblOrders.getModel();
+        tableModel.setRowCount(0);
+        for(Order ord:cust.getOrders()){
+            Object [] row = new Object[4];
+            row[0] = ord;
+            row[1] = ord.getRestuarantUserName();
+            row[2] = ord.getTotalPrice();
+            row[3] = ord.getStatus();
+            tableModel.addRow(row);
+        }    
+    }
+    
 }

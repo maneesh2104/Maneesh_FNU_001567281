@@ -24,6 +24,9 @@ public class Customer {
     int id = 1;
 
     public ArrayList<Order> getOrders() {
+        if(orders==null){
+            orders = new ArrayList<Order>();
+        }
         return orders;
     }
     
@@ -79,8 +82,8 @@ public class Customer {
         this.userName = userName;
     }
     
-    public void newOrder(String restaurantName, String customerName, String deliveryMan, ArrayList<Dish> order, String price, String deliveryAddress){
-        Order newOrder = new Order(restaurantName, customerName, deliveryMan, price, "New", String.valueOf(id++), order);
+    public void newOrder(String orderId,String restaurantName, String customerName, String deliveryMan, ArrayList<Dish> order, String price, String deliveryAddress){
+        Order newOrder = new Order(restaurantName, customerName, deliveryMan, price, "New", orderId, order);
         if(orders==null){
             orders = new ArrayList<Order>();
         }

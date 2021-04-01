@@ -5,6 +5,9 @@
  */
 package Business.DeliveryMan;
 
+import Business.Restaurant.Order;
+import java.util.ArrayList;
+
 /**
  *
  * @author harold
@@ -15,6 +18,7 @@ public class DeliveryMan {
     String userName;
     String phoneNumber;
     String address;
+    ArrayList<Order> orders;
        
     public DeliveryMan(String name, String userName, String password, String phoneNumber, String address){
         this.name = name;
@@ -63,6 +67,19 @@ public class DeliveryMan {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+    
+    public ArrayList<Order> getorders(){
+        if(orders == null){
+            orders = new ArrayList<Order>();
+        }
+        return orders;
+    }
+    
+      @Override
+    public String toString() {
+        return name;
+    }
+    
     
     
 }
