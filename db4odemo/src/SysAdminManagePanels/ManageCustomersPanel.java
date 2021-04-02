@@ -84,6 +84,8 @@ public class ManageCustomersPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 153, 0));
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Customers");
 

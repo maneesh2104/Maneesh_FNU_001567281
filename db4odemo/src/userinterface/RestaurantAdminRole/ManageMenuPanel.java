@@ -10,6 +10,7 @@ import Business.Restaurant.Dish;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -56,6 +57,8 @@ public class ManageMenuPanel extends javax.swing.JPanel {
         tblMenu = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 153, 0));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -193,6 +196,26 @@ public class ManageMenuPanel extends javax.swing.JPanel {
 
     private void btnAddDishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDishActionPerformed
         // TODO add your handling code here:
+        if(txtDishName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            return;
+        }
+        else if(txtDesc.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Descrition cannot be empty");
+            return;
+        }
+        else if(txtPrice.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Price cannot be empty");
+            return;
+        }
+        String numberFormat = "^\\d{0,8}(\\.\\d{1,4})?$";
+        if (Pattern.compile(numberFormat).matcher(txtPrice.getText()).matches()) {
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Price is not in proper format.");
+            return;
+        }
+
         Restaurant res = ecosystem.getRestaurantDirectory().getRestaurant(account.getUsername());
         String dishName = txtDishName.getText();
         String dishDesc = txtDesc.getText();

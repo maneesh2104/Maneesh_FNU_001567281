@@ -84,6 +84,8 @@ public class ManageResturantsPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 153, 0));
+
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);

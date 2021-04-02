@@ -80,6 +80,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 153, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         processJButton.setText("Order Delivered");

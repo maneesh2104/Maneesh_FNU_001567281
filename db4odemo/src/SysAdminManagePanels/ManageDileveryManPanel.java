@@ -84,6 +84,7 @@ public class ManageDileveryManPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 153, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {

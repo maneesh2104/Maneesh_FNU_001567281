@@ -50,6 +50,8 @@ public class ViewOrderPanel extends javax.swing.JPanel {
         tblDishes = new javax.swing.JTable();
         btnOrderREady = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 153, 0));
+
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Order Details");
 
